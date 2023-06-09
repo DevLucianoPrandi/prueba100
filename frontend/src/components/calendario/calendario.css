@@ -1,0 +1,23 @@
+.contenedor{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: auto;
+}
+
+.info{
+    color: lightgrey;
+    border-radius: 0.25em;
+    padding: 1em;
+}
+
+h2{color: #ffffff;
+}
+
+h3{color: #ffffff;
+    font-weight:bolder;
+}
+
+h4{color: #ffffff;
+    font-weight:bolder;
+}
+
+h5{color: #ffffff;}

@@ -1,0 +1,55 @@
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-block: 1em;
+    text-align: center;
+}
+.formRegistro {
+    align-items: center;
+    color: #ffffff;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    margin-bottom: 2em;
+    background-color: #0066cc;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0px 8px 9px -9px #3b3b3b;
+}
+
+.tituloCont{
+    border-radius: 0.5rem;
+    border: solid #ffffff 0.15rem;
+    padding: 0.5rem;
+}
+.input {
+    width: 100%;
+    padding: 10px 3px;
+    border-radius: 0.25em;
+    border: none;
+}
+
+.submit {
+    padding: 10px;
+    color: white;
+    font-size: 20px;
+    border-radius: 0.25em;
+    border: none;
+}
+.submit:hover  {
+    color: rgb(255, 254, 254);
+    transition: 0.25s all;
+    border: none;
+}
+
+@media screen and (max-width: 768px){
+    .formRegistro {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+    }
+}

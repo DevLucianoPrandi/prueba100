@@ -1,0 +1,25 @@
+.tablas{
+    font-size: larger;
+    padding: auto;
+}
+
+.promocionExt{
+    background-color: darkorange;
+    margin-top: 2em;
+    padding: 1em;
+    border-radius: 0.25em;
+}
+
+.promocionInt{
+    background-color:crimson;
+    margin-top: 2em;
+    padding: 2em;
+    border-radius: 0.25em;
+}
+
+.promocionPart{
+    background-color: chartreuse;
+    margin-top: 0.75em;
+    padding: 2em;
+    border-radius: 0.25em;
+}

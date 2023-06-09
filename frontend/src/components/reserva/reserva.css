@@ -1,0 +1,24 @@
+.contenedor {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: auto;
+}
+
+.formulario {
+    border-radius: 0.25em;
+    text-align: left;
+    font-size: small;
+}
+
+.submit {
+    padding: 10px;
+    color: white;
+    font-size: 20px;
+    border-radius: 0.25em;
+    border: none;
+}
+
+.submit:hover {
+    color: rgb(255, 254, 254);
+    transition: 0.25s all;
+    border: none;
+}

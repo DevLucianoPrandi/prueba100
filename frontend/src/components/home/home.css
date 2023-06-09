@@ -1,0 +1,32 @@
+.contenidoHome {
+  justify-content: space-around;
+  display: flex;
+  flex-flow: nowrap;
+  padding: 4rem;
+}
+
+.bienvenida {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  border: solid rgba(192, 192, 192, 0.5) 0.25rem;
+  border-radius: 1rem;
+  box-shadow: 5px 5px 20px 5px slategray;
+  padding: 2rem;
+}
+
+.imgBienvenida {
+  background-image: url('../../assets/img/bienvenida.jpg') ;
+  width: 40rem;
+  height: 25rem;
+  box-shadow: 0.25rem 0.25rem 0.25rem rgba(00, 00, 00, 0.25);
+}
+
+.textBienvenida {
+  text-align:justify ;
+  padding: 2rem;
+  width: 50rem;
+}
+.borderCarousel {
+    border-top: solid rgba(192, 192, 192) 0.25rem;
+}
