@@ -13,6 +13,7 @@ import Reserva from "./components/reserva/reserva";
 import Registro from "./components/accesos/registro";
 import AccAlumnos from "./components/accesos/accAlumnos";
 import AccAdmin from "./components/accesos/accAdmin";
+import AdmUsuarios from "./components/admin/admUsuarios";
 import Remate from "./components/footer/remate";
 import Error from "./components/error/error";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -36,6 +37,7 @@ function App() {
           <Route path="admin" element={<Admin />} />
           <Route path="accAlumnos" element={<AccAlumnos />} />
           <Route path="accAdmin" element={<AccAdmin />} />
+          <Route path="admUsuarios" element={<AdmUsuarios/>} />
           <Route path="contacto" element={<Contacto />} />
           <Route path="reserva" element={<Reserva />} />
           <Route path="*" element={<Error />} />

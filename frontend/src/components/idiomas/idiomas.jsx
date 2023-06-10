@@ -28,30 +28,29 @@ export const Idiomas = () => {
     }
 
     return (
-        <Container className='backGround'>
+        <Container className='backGround d-flex'>
+            <Row className='tarjetas pb-3' >
             <h2 className='titulo'>Eligí el idioma que quieras aprender!</h2>
                 {
-                idiomas.map(({nombre, descripcion, boton, paises, imagen})=>(
-                    <Container>
-                <Row className='tarjetas pb-3' >
-                <Col xs={12} md={6} lg={4} >
-                    <Card className='shadow text-center mx-auto'>
-                        <Card.Img style={{ width: '14em' }} variant=" mx-auto mt-3 rounded" src={process.env.PUBLIC_URL + imagen} />
-                        <Card.Body className='text-center mx-auto'>
-                            <Card.Title className='text-center pb-1'><h4 style={{ fontWeight: 'bold' }}>{nombre}</h4></Card.Title>
-                            <Card.Text className='textoTarj w-100'>
-                                {descripcion}
-                                <hr />
-                                Idiomas en los que se habla {nombre}: {paises}
-                            </Card.Text>
-                            <Button style={{ width: '12em', marginTop: '0.5em' }} variant="outline-primary" as={Link} to="../reserva">{boton}</Button>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                </Row>
-                </Container>
-                ))
+                    idiomas.map(({ nombre, descripcion, boton, paises, imagen }) => (
+
+                        <Col xs={12} md={8} lg={4} >
+                            <Card className='shadow text-center m-2 justify' style={{height:'30rem'}} >
+                                <Card.Img style={{ width: '14em', marginTop: '1rem' }} variant=" mx-auto mt-3 rounded" src={process.env.PUBLIC_URL + imagen} />
+                                <Card.Body className='text-center mx-auto'>
+                                    <Card.Title className='text-center pb-1'><h4 style={{ fontWeight: 'bold' }}>{nombre}</h4></Card.Title>
+                                    <Card.Text className='textoTarj w-100'>
+                                        {descripcion}
+                                        <hr />
+                                        Idiomas en los que se habla {nombre}: {paises}
+                                    </Card.Text>
+                                    <Button className='mt-3' variant="outline-primary" as={Link} to="../reserva">{boton}</Button>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    ))
                 }
+            </Row>
         </Container >
     );
 };
