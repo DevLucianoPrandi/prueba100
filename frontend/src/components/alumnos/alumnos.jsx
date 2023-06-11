@@ -27,7 +27,7 @@ export const Alumnos = () => {
   return (
     <Container className='p-3' style={{ width: '50%' }}>
       {
-        alumnos.map(({ nombre, apellido, fechadenac, dni, telefono, email, password, usuario }) => (
+        alumnos.map(({ nombre, apellido, fechadenac, dni, telefono, email, password, usuario, imagen }) => (
           <Accordion rounded defaultActiveKey="0" className='p-3' >
             <Accordion.Item eventKey="0">
               <Accordion.Header rounded><h5>Tu perfil</h5></Accordion.Header>

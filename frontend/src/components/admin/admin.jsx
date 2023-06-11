@@ -3,26 +3,28 @@ import { useState } from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import AdmUsuarios from './admUsuarios';
+import AdmIdiomas from './admIdiomas';
+import Inscripciones from './Inscripciones';
 function Admin() {
 
-  const [key, setKey] = useState('usuarios');
+  const [key, setKey] = useState('inscripciones');
 
   return (
     <Tabs
-      id="controlled-tab-example"
       activeKey={key}
       onSelect={(k) => setKey(k)}
       className="mb-3"
     >
-      <Tab eventKey="usurios" title="Usuarios">
+      <Tab eventKey="inscripciones" title="Inscripciones">
+        <Inscripciones />
+      </Tab>
+      <Tab eventKey="usuarios" title="Usuarios">
         <AdmUsuarios />
       </Tab>
-      <Tab eventKey="profile" title="Idiomas">
-        Tab content for Profile
+      <Tab eventKey="idiomas" title="Idiomas">
+        <AdmIdiomas />
       </Tab>
-      <Tab eventKey="contact" title="Cursos" disabled>
-        Tab content for Contact
-      </Tab>
+
     </Tabs>
   );
 }

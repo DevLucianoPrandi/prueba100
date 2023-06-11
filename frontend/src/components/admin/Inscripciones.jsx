@@ -1,49 +1,47 @@
 import React, { useState, useEffect } from 'react';
-import { getIdiomas } from './services';
+import { getInscripciones } from './services';
+import { getAlumnos } from './services';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Image from 'react-bootstrap/esm/Image';
-import Container from 'react-bootstrap/Container'
-import CrearIdiomas from './cruds/idiomas/crearIdiomas';
-import ActIdiomas from './cruds/idiomas/actIdiomas';
-import BorrarIdiomas from './cruds/idiomas/borrarIdiomas';
+import Container from 'react-bootstrap/Container';
+import ActInscripciones from './cruds/inscripciones/actInscripciones';
+import BorrarInscripciones from './cruds/inscripciones/borrarInscripciones';
+import CrearInscripciones from './cruds/inscripciones/crearInscripciones';
 
-export const AdmIdiomas = () => {
+export const Inscripciones = () => {
 
-    const [idiomas, setIdiomas] = useState([])
+    const [inscripciones, setInscripciones] = useState([])
 
     useEffect(() => {
-        async function cargaIdiomas() {
-            const response = await getIdiomas()
+        async function cargaInscripciones() {
+            const response = await getInscripciones()
 
             if (response.status === 200) {
-                setIdiomas(response.data.idiomas)
+                setInscripciones(response.data.inscripciones)
             }
         }
-        cargaIdiomas()
+        cargaInscripciones()
     }, [])
 
-    if (!idiomas.length) {
+    if (!inscripciones.length) {
         return <div className='text-center'>Cargando contenido...</div>
     }
 
     return (
-        <Container className='fluid'>
+        <Container className=' fluid'>
             <Container className='d-flex justify-content-between fluid w-50 '>
-            <CrearIdiomas />
-            <ActIdiomas />
-            <BorrarIdiomas />
+                <CrearInscripciones />
+                <ActInscripciones />
+                <BorrarInscripciones />
             </Container>
             {
-                idiomas.map(({ nombre, descripcion, boton, paises, imagen }) => (
+                inscripciones.map(({ idioma, dia, horario, modalidad }) => (
 
                     <ListGroup as="ol" numbered className='m-3' style={{ border: '3px solid grey' }}>
                         <ListGroup.Item
                             as="li"
-                            className="d-flex justify-content-between align-items-start"
-                        >
-                            <div className="ms-2 me-auto">
-                                <div className="fw-bold">Bandera</div>
-                                <Image style={{ border: '3px solid grey', height: '3rem', width: 'auto' }} className='shadow mb-2' src={process.env.PUBLIC_URL + imagen} rounded />
+                            className="d-flex justify-content-between align-items-start" variant='success'>
+                            <div className="ms-2 me-auto" >
+                             <h3>Alumno</h3>
                             </div>
                         </ListGroup.Item>
                         <ListGroup.Item
@@ -52,7 +50,27 @@ export const AdmIdiomas = () => {
                         >
                             <div className="ms-2 me-auto">
                                 <div className="fw-bold">Idioma</div>
-                                {nombre}
+                                {idioma}
+                            </div>
+                        </ListGroup.Item>
+
+                        <ListGroup.Item
+                            as="li"
+                            className="d-flex justify-content-between align-items-start"
+                        >
+                            <div className="ms-2 me-auto">
+                                <div className="fw-bold">Día(s) de cursada</div>
+                                {dia}
+                            </div>
+                        </ListGroup.Item>
+
+                        <ListGroup.Item
+                            as="li"
+                            className="d-flex justify-content-between align-items-start"
+                        >
+                            <div className="ms-2 me-auto">
+                                <div className="fw-bold">Horario</div>
+                                {horario}
                             </div>
                         </ListGroup.Item>
                         <ListGroup.Item
@@ -60,26 +78,8 @@ export const AdmIdiomas = () => {
                             className="d-flex justify-content-between align-items-start"
                         >
                             <div className="ms-2 me-auto">
-                                <div className="fw-bold">Descripción</div>
-                                {descripcion}
-                            </div>
-                        </ListGroup.Item>
-                        <ListGroup.Item
-                            as="li"
-                            className="d-flex justify-content-between align-items-start"
-                        >
-                            <div className="ms-2 me-auto">
-                                <div className="fw-bold">Países en los que se habla</div>
-                                {paises}
-                            </div>
-                        </ListGroup.Item>
-                        <ListGroup.Item
-                            as="li"
-                            className="d-flex justify-content-between align-items-start"
-                        >
-                            <div className="ms-2 me-auto">
-                                <div className="fw-bold">Texto del botón</div>
-                                {boton}
+                                <div className="fw-bold">Modalidad de cursada</div>
+                                {modalidad}
                             </div>
                         </ListGroup.Item>
                     </ListGroup>
@@ -87,4 +87,4 @@ export const AdmIdiomas = () => {
         </Container >
     );
 };
-export default AdmIdiomas
+export default Inscripciones

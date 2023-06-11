@@ -14,6 +14,7 @@ import Registro from "./components/accesos/registro";
 import AccAlumnos from "./components/accesos/accAlumnos";
 import AccAdmin from "./components/accesos/accAdmin";
 import AdmUsuarios from "./components/admin/admUsuarios";
+import AdmIdiomas from "./components/admin/admIdiomas";
 import Remate from "./components/footer/remate";
 import Error from "./components/error/error";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -38,6 +39,7 @@ function App() {
           <Route path="accAlumnos" element={<AccAlumnos />} />
           <Route path="accAdmin" element={<AccAdmin />} />
           <Route path="admUsuarios" element={<AdmUsuarios/>} />
+          <Route path="admIdiomas" element={<AdmIdiomas/>} />
           <Route path="contacto" element={<Contacto />} />
           <Route path="reserva" element={<Reserva />} />
           <Route path="*" element={<Error />} />

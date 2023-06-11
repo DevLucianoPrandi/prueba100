@@ -13,3 +13,27 @@ export async function getAlumnos() {
     console.log(e);
   }
 }
+
+export async function getIdiomas() {
+    try {
+      const response = await axios({
+        url: `${baseUrl}/idiomas`,
+        method: "GET",
+      });
+      return response;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  export async function getInscripciones() {
+    try {
+      const response = await axios({
+        url: `${baseUrl}/inscripciones`,
+        method: "GET",
+      });
+      return response;
+    } catch (e) {
+      console.log(e);
+    }
+  }

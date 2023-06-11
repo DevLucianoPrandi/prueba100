@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { getAlumnos } from './services';
-import Accordion from 'react-bootstrap/Accordion';
-import Container from 'react-bootstrap/esm/Container';
-import Figure from 'react-bootstrap/Figure';
-import Button from 'react-bootstrap/esm/Button';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Image from 'react-bootstrap/esm/Image';
+import Container from 'react-bootstrap/Container';
+import BorrarUsuarios from './cruds/usuarios/borrarUsuarios';
+import ActUsuario from './cruds/usuarios/actUsuarios';
+import CrearUsuarios from './cruds/usuarios/crearUsuarios';
 
-
-
-export const AdmUsuarios = () => {
+export const AdmAlumnos = () => {
 
     const [alumnos, setAlumnos] = useState([])
 
     useEffect(() => {
-        async function cargaAlumnos() {
+        async function cargaAlumnnos() {
             const response = await getAlumnos()
 
             if (response.status === 200) {
                 setAlumnos(response.data.alumnos)
             }
         }
-        cargaAlumnos()
+        cargaAlumnnos()
     }, [])
 
     if (!alumnos.length) {
@@ -27,52 +27,89 @@ export const AdmUsuarios = () => {
     }
 
     return (
-        <div>
-            <Container className='p-3' style={{ width: '50%' }}>
-                <Button variant='success' className=' m-2'>Crear perfil</Button>
-                <Button className=' m-2'>Actualizar perfil</Button>
-                <Button variant='danger' className='m-2'>Eliminar perfil</Button>
+        <Container className=' fluid'>
+            <Container className='d-flex justify-content-between fluid w-50 '>
+                <CrearUsuarios />
+                <ActUsuario />
+                <BorrarUsuarios />
             </Container>
+            {
+                alumnos.map(({ nombre, apellido, fechadenac, dni, telefono, email, password, usuario, imagen, categoria }) => (
 
-            <Container className='p-3' style={{ width: '50%' }}>
-                {alumnos.map(({ nombre, apellido, fechadenac, dni, telefono, email, password, usuario }) => (
-                    <Accordion rounded defaultActiveKey="0" className='p-3'>
-                        <Accordion.Item eventKey="0">
-                            <Accordion.Header rounded><h5>Tu perfil</h5></Accordion.Header>
-                            <Accordion.Body>
-                                <h6><ul className='listaDatos'>
-                                    <div className='ficha'>
-                                        <li className='tituloPerfil'><h4>{usuario}</h4></li>
-                                        <Figure>
-                                            <Figure.Image
-                                                width={171}
-                                                height={180}
-                                                alt="Imagen de perfil"
-                                                src={process.env.PUBLIC_URL + '/assets/img/ingles.png'} />
-                                        </Figure>
-                                        <div className='datos'>
-                                            <li>Nombre: {nombre}</li>
-                                            <li>Apellido: {apellido}</li>
-                                            <li>Fecha de nacimiento: {fechadenac}</li>
-                                            <li>Número de DNI: {dni}</li>
-                                            <li>Teléfono de contacto: {telefono}</li>
-                                            <li>E-mail: {email}</li>
-                                        </div>
-                                    </div>
-                                </ul></h6>
-                            </Accordion.Body>
-                        </Accordion.Item>
-                        <Accordion.Item eventKey="1">
-                            <Accordion.Header><h5>Cursos</h5></Accordion.Header>
-                            <Accordion.Body>
-                            </Accordion.Body>
-                        </Accordion.Item>
-                    </Accordion>
+                    <ListGroup as="ol" numbered className='m-3' style={{ border: '3px solid grey' }}>
+                        <ListGroup.Item
+                            as="li"
+                            className="d-flex justify-content-between align-items-start" variant='success'>
+                            <div className="ms-2 me-auto" >
+                             <h3>{[nombre + ' ' + apellido]}</h3>
+                            </div>
+                        </ListGroup.Item>
+                        <ListGroup.Item
+                            as="li"
+                            className="d-flex justify-content-between align-items-start"
+                        >
+                            <div className="ms-2 me-auto">
+                                <div className="fw-bold">Nombre de usuario</div>
+                                {usuario}
+                            </div>
+                        </ListGroup.Item>
+                        <ListGroup.Item
+                            as="li"
+                            className="d-flex justify-content-between align-items-start"
+                        >
+                            <div className="ms-2 me-auto">
+                                <div className="fw-bold">Imágen de perfíl</div>
+                                <Image style={{ border: '3px solid grey', height: '3rem', width: 'auto' }} className='shadow mb-4' src={process.env.PUBLIC_URL + imagen} rounded />
+                            </div>
+                        </ListGroup.Item>
+                        <ListGroup.Item
+                            as="li"
+                            className="d-flex justify-content-between align-items-start"
+                        >
+                            <div className="ms-2 me-auto">
+                                <div className="fw-bold">Fecha de nacimiento</div>
+                                {fechadenac}
+                            </div>
+                        </ListGroup.Item>
+                        <ListGroup.Item
+                            as="li"
+                            className="d-flex justify-content-between align-items-start"
+                        >
+                            <div className="ms-2 me-auto">
+                                <div className="fw-bold">DNI</div>
+                                {dni}
+                            </div>
+                        </ListGroup.Item>
+                        <ListGroup.Item
+                            as="li"
+                            className="d-flex justify-content-between align-items-start"
+                        >
+                            <div className="ms-2 me-auto">
+                                <div className="fw-bold">Dirección de correo electrónico</div>
+                                {email}
+                            </div>
+                        </ListGroup.Item>
+                        <ListGroup.Item
+                            as="li"
+                            className="d-flex justify-content-between align-items-start"
+                        >
+                            <div className="ms-2 me-auto">
+                                <div className="fw-bold">Teléfono</div>
+                                {telefono}
+                            </div>
+                        </ListGroup.Item>
+                        <ListGroup.Item
+                            as="li"
+                            className="d-flex justify-content-between align-items-start"
+                        >
+                            <div className="ms-2 me-auto">
+                                <div className="fw-bold">Categoría</div>
+                                {categoria}
+                            </div>
+                        </ListGroup.Item>
+                    </ListGroup>
                 ))}
-
-            </Container>
-        </div>
+        </Container >
     );
-}
-
-export default AdmUsuarios
+};
+export default AdmAlumnos
