@@ -20,7 +20,7 @@ const idioma = Idioma({
 
     if (req.file) {
       const { filename } = req.file;
-      idioma.setImgUrl(filename);
+      idioma.setImagen(filename);
     }
 
     const idiomas = await idioma.save();

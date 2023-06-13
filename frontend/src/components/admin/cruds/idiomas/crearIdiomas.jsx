@@ -1,16 +1,28 @@
 import Button from 'react-bootstrap/Button';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import { saveIdioma } from '../../services';
 
 function CrearIdiomas() {
 
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const [idioma,setIdioma] = useState ("");
+    const [descripcion, setDescripcion] = useState ("");
+    const [paises, setPaises] = useState ("");
+    const [boton, setBoton] = useState ("");
+
+    const inputFileRef = useRef()
+
+    const handleSubmit = (idiomaData) => {
+       saveIdioma (idiomaData= {nombre: idioma, descripcion: descripcion, paises: paises, boton: boton, imagen: `storage/imgs/` + inputFileRef.current.files[0]})
+       console.log(idiomaData);
+        }
 
     return (
         <div
@@ -28,37 +40,37 @@ function CrearIdiomas() {
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="idioma">
                                 <Form.Label>Idioma</Form.Label>
-                                <Form.Control placeholder="Nombre del idioma" />
+                                <Form.Control placeholder="Nombre del idioma" name='idioma' onChange={(event) => {setIdioma(event.target.value)}} />
                             </Form.Group>
                         </Row>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="descripcion">
                                 <Form.Label>Descripción</Form.Label>
-                                <Form.Control placeholder="Descripción del idioma" />
+                                <Form.Control name='descripcion' placeholder="Descripción del idioma" onChange={(event) => {setDescripcion(event.target.value)}} />
                             </Form.Group>
                         </Row>
 
                         <Form.Group className="mb-3" controlId="paises">
                             <Form.Label>Países</Form.Label>
-                            <Form.Control placeholder="Países en los que se habla el idioma" />
+                            <Form.Control placeholder="Países en los que se habla el idioma" name='paises' onChange={(event) => {setPaises(event.target.value)}} />
                         </Form.Group>
 
                         <Form.Group controlId="imagen" className="mb-3">
                             <Form.Label>Seleccionar bandera</Form.Label>
-                            <Form.Control type="file" />
+                            <Form.Control type="file" ref={inputFileRef} />
                         </Form.Group>
 
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="boton">
                                 <Form.Label>Texto para el botón</Form.Label>
-                                <Form.Control placeholder="Texto que se mostrará en el botón" />
+                                <Form.Control placeholder="Texto que se mostrará en el botón" name='boton' onChange={(event) => {setBoton(event.target.value)}} />
                             </Form.Group>
                         </Row>
                     </Form>
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="success" type="submit">Agregar idioma</Button>
+                    <Button variant="success" type="submit" onClick={handleSubmit}>Agregar idioma</Button>
                     <Button variant="danger">Cancelar</Button>
                 </Modal.Footer>
             </Modal>

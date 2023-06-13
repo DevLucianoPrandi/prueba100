@@ -14,10 +14,10 @@ imagen: String,
     timestamps: true
 });
 
-idiomaSchema.methods.setImgUrl = function setImgUrl (){
+idiomaSchema.methods.setImagen = function setImagen (){
 
     const {host, port} = appConfig
-    this.imgUrl = `${host}:${port}/public/${filename}`
+    this.imagen = `${host}:${port}/public/${filename}`
 }
 
 module.exports = mongoose.model('idioma', idiomaSchema)
