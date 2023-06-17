@@ -4,10 +4,10 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import AdmUsuarios from './admUsuarios';
 import AdmIdiomas from './admIdiomas';
-import Inscripciones from './Inscripciones';
+import AdmCursos from './admCursos';
 function Admin() {
 
-  const [key, setKey] = useState('inscripciones');
+  const [key, setKey] = useState('cursos');
 
   return (
     <Tabs
@@ -15,8 +15,8 @@ function Admin() {
       onSelect={(k) => setKey(k)}
       className="mb-3"
     >
-      <Tab eventKey="inscripciones" title="Inscripciones">
-        <Inscripciones />
+      <Tab eventKey="cursos" title="Cursos">
+        <AdmCursos />
       </Tab>
       <Tab eventKey="usuarios" title="Usuarios">
         <AdmUsuarios />

@@ -2,7 +2,7 @@ const mongoose= require('mongoose')
 
 const Schema = mongoose.Schema
 
-const inscripcionesSchema = Schema ({
+const cursoSchema = Schema ({
 idioma: String,
 dia: String,
 horario: String,
@@ -12,4 +12,4 @@ modalidad: String,
     timestamps: true
 });
 
-module.exports = mongoose.model('inscripciones', inscripcionesSchema)
+module.exports = mongoose.model('cursos', cursoSchema)

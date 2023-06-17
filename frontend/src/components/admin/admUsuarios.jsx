@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getAlumnos } from './services';
+import { getUsuarios } from './services';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Image from 'react-bootstrap/esm/Image';
 import Container from 'react-bootstrap/Container';
@@ -7,22 +7,22 @@ import BorrarUsuarios from './cruds/usuarios/borrarUsuarios';
 import ActUsuario from './cruds/usuarios/actUsuarios';
 import CrearUsuarios from './cruds/usuarios/crearUsuarios';
 
-export const AdmAlumnos = () => {
+export const AdmUsuarios = () => {
 
-    const [alumnos, setAlumnos] = useState([])
+    const [usuarios, setUsuarios] = useState([])
 
     useEffect(() => {
-        async function cargaAlumnnos() {
-            const response = await getAlumnos()
+        async function cargaUsuarios() {
+            const response = await getUsuarios()
 
             if (response.status === 200) {
-                setAlumnos(response.data.alumnos)
+                setUsuarios(response.data.usuarios)
             }
         }
-        cargaAlumnnos()
+        cargaUsuarios()
     }, [])
 
-    if (!alumnos.length) {
+    if (!usuarios.length) {
         return <div className='text-center'>Cargando contenido...</div>
     }
 
@@ -34,7 +34,7 @@ export const AdmAlumnos = () => {
                 <BorrarUsuarios />
             </Container>
             {
-                alumnos.map(({ nombre, apellido, fechadenac, dni, telefono, email, password, usuario, imagen, categoria }) => (
+                usuarios.map(({ nombre, apellido, fechadenac, dni, telefono, email, usuario, imagen, categoria }) => (
 
                     <ListGroup as="ol" numbered className='m-3' style={{ border: '3px solid grey' }}>
                         <ListGroup.Item
@@ -112,4 +112,4 @@ export const AdmAlumnos = () => {
         </Container >
     );
 };
-export default AdmAlumnos
+export default AdmUsuarios

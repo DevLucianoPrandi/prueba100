@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
-function ActInscripciones() {
+function ActCursos() {
 
     const [show, setShow] = useState(false);
 
@@ -17,19 +17,19 @@ function ActInscripciones() {
             className="modal show"
             style={{ display: 'block', position: 'initial' }}
         >
-            <Button className=' shadow m-3' variant="primary" type="submit" value="Enviar" onClick={handleShow}>Actualizar inscripción</Button>
+            <Button className=' shadow m-3' variant="primary" type="submit" value="Enviar" onClick={handleShow}>Actualizar cursos</Button>
             <Modal show={show} onHide={handleClose} animation={false}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Actualizar una inscripción</Modal.Title>
+                    <Modal.Title>Actualizar un curso</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
                     <Form>
                         <Row className="mb-3">
                         <Form.Group as={Col} controlId="idioma">
-                            <Form.Label>Seleccioná una inscripción</Form.Label>
+                            <Form.Label>Seleccioná un curso</Form.Label>
                             <Form.Select>
-                                <option>Seleccioná una inscripción</option>
+                                <option>Seleccioná un curso</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
@@ -78,4 +78,4 @@ function ActInscripciones() {
     );
 }
 
-export default ActInscripciones;
+export default ActCursos;

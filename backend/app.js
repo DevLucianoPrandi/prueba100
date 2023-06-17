@@ -1,9 +1,9 @@
 const express=require('express')
 const bodyParser =require('body-parser')
 const cors = require('cors')
-const alumnosRoutes =require ('./routes/alumno')
+const usuariosRoutes =require ('./routes/usuario')
 const idiomasRoutes =require ('./routes/idioma')
-const inscripcionesRoutes = require('./routes/inscripciones')
+const cursosRoutes = require('./routes/cursos')
 
 const app = express();
 
@@ -14,8 +14,8 @@ app.use(bodyParser.json())
 
 app.use('/public', express.static(`${__dirname}/storage/imgs`))
 
-app.use('/v1', alumnosRoutes)
+app.use('/v1', usuariosRoutes)
 app.use('/v1', idiomasRoutes)
-app.use ('/v1', inscripcionesRoutes)
+app.use ('/v1', cursosRoutes)
 
 module.exports = app

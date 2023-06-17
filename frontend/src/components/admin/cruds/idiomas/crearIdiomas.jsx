@@ -12,7 +12,7 @@ function CrearIdiomas() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [idioma,setIdioma] = useState ("");
+    const [nombre,setNombre] = useState ("");
     const [descripcion, setDescripcion] = useState ("");
     const [paises, setPaises] = useState ("");
     const [boton, setBoton] = useState ("");
@@ -20,7 +20,7 @@ function CrearIdiomas() {
     const inputFileRef = useRef()
 
     const handleSubmit = (idiomaData) => {
-       saveIdioma (idiomaData= {nombre: idioma, descripcion: descripcion, paises: paises, boton: boton, imagen: `storage/imgs/` + inputFileRef.current.files[0]})
+       saveIdioma (idiomaData= {nombre: nombre, descripcion: descripcion, paises: paises, boton: boton, imagen: `storage/imgs/` + inputFileRef.current.files[0]})
        console.log(idiomaData);
         }
 
@@ -38,9 +38,9 @@ function CrearIdiomas() {
                 <Modal.Body>
                     <Form>
                         <Row className="mb-3">
-                            <Form.Group as={Col} controlId="idioma">
+                            <Form.Group as={Col} controlId="nombre">
                                 <Form.Label>Idioma</Form.Label>
-                                <Form.Control placeholder="Nombre del idioma" name='idioma' onChange={(event) => {setIdioma(event.target.value)}} />
+                                <Form.Control placeholder="Nombre del idioma" name='nombre' onChange={(event) => {setNombre(event.target.value)}} />
                             </Form.Group>
                         </Row>
                         <Row className="mb-3">
