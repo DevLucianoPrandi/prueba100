@@ -118,10 +118,10 @@ export async function updateIdioma(idiomaData) {
   }
 }
 
-export async function deleteIdioma() {
+export async function deleteIdioma(_id) {
   try {
     const response = await axios({
-      url: `${baseUrl}/idiomas`,
+      url: `${baseUrl}/idiomas/${_id}`,
       method: "DELETE",
     });
     return response;
