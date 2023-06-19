@@ -44,7 +44,7 @@ function BorrarCursos() {
                 <Modal.Footer>
                     <AlertCursos/>
                     <Button variant="danger" type="submit">Borrar selección(ados)</Button>
-                    <Button variant="secondary">Cancelar</Button>
+                    <Button variant="secondary" onClick={handleClose}>Cancelar</Button>
                 </Modal.Footer>
             </Modal>
         </div>

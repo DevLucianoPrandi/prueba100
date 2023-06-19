@@ -26,14 +26,14 @@ export const AdmCursos = () => {
     }
 
     return (
-        <Container className=' fluid'>
-            <Container className='d-flex justify-content-between fluid w-50 '>
-                <CrearCursos />
-                <ActCursos />
-                <BorrarCursos />
-            </Container>
-            {
-                cursos.map(({ idioma, dia, horario, modalidad }) => (
+        <><Container className='d-flex justify-content-between fluid w-50 '>
+            <CrearCursos />
+            <ActCursos />
+            <BorrarCursos />
+        </Container>
+            <Container className=' fluid'>
+
+                {cursos.map(({ idioma, dia, horario, modalidad }) => (
 
                     <ListGroup as="ol" numbered className='m-3' style={{ border: '3px solid grey' }}>
                         <ListGroup.Item
@@ -76,7 +76,7 @@ export const AdmCursos = () => {
                         </ListGroup.Item>
                     </ListGroup>
                 ))}
-        </Container >
+            </Container></>
     );
 };
 export default AdmCursos

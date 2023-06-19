@@ -20,8 +20,8 @@ function CrearIdiomas() {
     const inputFileRef = useRef()
 
     const handleSubmit = (idiomaData) => {
-       saveIdioma (idiomaData= {nombre: nombre, descripcion: descripcion, paises: paises, boton: boton, imagen: `storage/imgs/` + inputFileRef.current.files[0]})
-       console.log(idiomaData);
+            saveIdioma(idiomaData = { nombre: nombre, descripcion: descripcion, paises: paises, boton: boton, imagen: `storage/imgs/` + inputFileRef.current.files[0] });
+            console.log(idiomaData);
         }
 
     return (
@@ -71,7 +71,7 @@ function CrearIdiomas() {
 
                 <Modal.Footer>
                     <Button variant="success" type="submit" onClick={handleSubmit}>Agregar idioma</Button>
-                    <Button variant="danger">Cancelar</Button>
+                    <Button variant="danger" onClick={handleClose}>Cancelar</Button>
                 </Modal.Footer>
             </Modal>
         </div>

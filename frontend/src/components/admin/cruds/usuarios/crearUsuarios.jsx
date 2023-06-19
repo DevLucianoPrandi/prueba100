@@ -28,6 +28,7 @@ function CrearUsuarios() {
     const handleSubmit = (usuarioData) => {
         saveUsuario(usuarioData = { user: user, nombre: nombre, apellido: apellido, fechadenac: fechadenac, dni: dni, telefono: telefono, email: email, password: password, imagen: `storage/imgs/` + inputFileRef.current.files[0], categoria: categoria })
         console.log(usuarioData);
+        
     }
 
     const handleChange = (event) => setCategoria(event.target.value);
@@ -118,7 +119,7 @@ function CrearUsuarios() {
 
                 <Modal.Footer>
                     <Button variant="success" type="submit" onClick={handleSubmit} >Agregar usuario</Button>
-                    <Button variant="danger">Cancelar</Button>
+                    <Button variant="danger" onClick={handleClose}>Cancelar</Button>
                 </Modal.Footer>
             </Modal>
         </div>

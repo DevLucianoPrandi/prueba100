@@ -4,8 +4,8 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Image from 'react-bootstrap/esm/Image';
 import Container from 'react-bootstrap/Container'
 import CrearIdiomas from './cruds/idiomas/crearIdiomas';
-import ActIdiomas from './cruds/idiomas/actIdiomas';
 import BorrarIdiomas from './cruds/idiomas/borrarIdiomas';
+import ActIdiomas from './cruds/idiomas/actIdiomas';
 
 export const AdmIdiomas = () => {
 
@@ -27,16 +27,18 @@ export const AdmIdiomas = () => {
     }
 
     return (
-        <Container className='fluid'>
-            <Container className='d-flex justify-content-between fluid w-50 '>
+        <><Container className='d-flex justify-content-between fluid w-50 '>
+
             <CrearIdiomas />
             <ActIdiomas />
             <BorrarIdiomas />
-            </Container>
-            {
-                idiomas.map(({ nombre, descripcion, boton, paises, imagen }) => (
+            
+        </Container>
 
-                    <ListGroup as="ol" numbered className='m-3' style={{ border: '3px solid grey' }}>
+            <Container className='fluid'>
+                {idiomas.map(({ _id, nombre, descripcion, boton, paises, imagen }) => (
+
+                    <ListGroup key={_id} as="ol" numbered className='m-3' style={{ border: '3px solid grey' }}>
                         <ListGroup.Item
                             as="li"
                             className="d-flex justify-content-between align-items-start"
@@ -54,8 +56,7 @@ export const AdmIdiomas = () => {
                                 <div className="fw-bold">Idioma</div>
                                 {nombre}
                             </div>
-                        </ListGroup.Item>
-                        <ListGroup.Item
+                        </ListGroup.Item><ListGroup.Item
                             as="li"
                             className="d-flex justify-content-between align-items-start"
                         >
@@ -83,8 +84,9 @@ export const AdmIdiomas = () => {
                             </div>
                         </ListGroup.Item>
                     </ListGroup>
-                ))}
-        </Container >
+                )
+                )}
+            </Container></>
     );
 };
 export default AdmIdiomas

@@ -64,7 +64,7 @@ function CrearCursos() {
 
                 <Modal.Footer>
                     <Button variant="success" type="submit " onClick={handleSubmit}>Agregar curso</Button>
-                    <Button variant="danger">Cancelar</Button>
+                    <Button variant="danger" onClick={handleClose}>Cancelar</Button>
                 </Modal.Footer>
             </Modal>
         </div>

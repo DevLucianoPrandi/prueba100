@@ -20,7 +20,7 @@ export async function getCursos() {
       url: `${baseUrl}/cursos`,
       method: "GET",
     });
-    return response;
+    return response.data;
   } catch (e) {
     console.log(e);
   }
@@ -91,6 +91,38 @@ export async function saveUsuario(usuarioData) {
       url: `${baseUrl}/usuarios`,
       method: "POST",
       data: formData,
+    });
+    return response;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function updateIdioma(idiomaData) {
+  const formData = new FormData();
+  formData.append("nombre", idiomaData.nombre);
+  formData.append("descripcion", idiomaData.descripcion);
+  formData.append("paises", idiomaData.paises);
+  formData.append("boton", idiomaData.boton);
+  formData.append("imagen", idiomaData.imagen);
+  try {
+    console.log(idiomaData);
+    const response = await axios({
+      url: `${baseUrl}/idiomas`,
+      method: "PUT",
+      data: formData,
+    });
+    return response;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function deleteIdioma() {
+  try {
+    const response = await axios({
+      url: `${baseUrl}/idiomas`,
+      method: "DELETE",
     });
     return response;
   } catch (e) {

@@ -71,7 +71,7 @@ function ActCursos() {
 
                 <Modal.Footer>
                     <Button variant="primary" type="submit">Actualizar</Button>
-                    <Button variant="danger">Cancelar</Button>
+                    <Button variant="danger" onClick={handleClose}>Cancelar</Button>
                 </Modal.Footer>
             </Modal>
         </div>

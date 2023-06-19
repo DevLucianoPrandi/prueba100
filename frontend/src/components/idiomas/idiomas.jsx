@@ -22,7 +22,6 @@ export const Idiomas = () => {
         }
         cargaIdiomas()
     }, [])
-
     if (!idiomas.length) {
         return <div className='text-center'>Cargando contenido...</div>
     }

@@ -27,21 +27,21 @@ export const AdmUsuarios = () => {
     }
 
     return (
-        <Container className=' fluid'>
-            <Container className='d-flex justify-content-between fluid w-50 '>
-                <CrearUsuarios />
-                <ActUsuario />
-                <BorrarUsuarios />
-            </Container>
-            {
-                usuarios.map(({ nombre, apellido, fechadenac, dni, telefono, email, usuario, imagen, categoria }) => (
+        <><Container className='d-flex justify-content-between fluid w-50 '>
+            <CrearUsuarios />
+            <ActUsuario />
+            <BorrarUsuarios />
+        </Container>
+            <Container className=' fluid'>
+
+                {usuarios.map(({ nombre, apellido, fechadenac, dni, telefono, email, usuario, imagen, categoria }) => (
 
                     <ListGroup as="ol" numbered className='m-3' style={{ border: '3px solid grey' }}>
                         <ListGroup.Item
                             as="li"
                             className="d-flex justify-content-between align-items-start" variant='success'>
-                            <div className="ms-2 me-auto" >
-                             <h3>{[nombre + ' ' + apellido]}</h3>
+                            <div className="ms-2 me-auto">
+                                <h3>{[nombre + ' ' + apellido]}</h3>
                             </div>
                         </ListGroup.Item>
                         <ListGroup.Item
@@ -109,7 +109,7 @@ export const AdmUsuarios = () => {
                         </ListGroup.Item>
                     </ListGroup>
                 ))}
-        </Container >
+            </Container></>
     );
 };
 export default AdmUsuarios

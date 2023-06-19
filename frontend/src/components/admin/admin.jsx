@@ -7,7 +7,7 @@ import AdmIdiomas from './admIdiomas';
 import AdmCursos from './admCursos';
 function Admin() {
 
-  const [key, setKey] = useState('cursos');
+  const [key, setKey] = useState('idiomas');
 
   return (
     <Tabs

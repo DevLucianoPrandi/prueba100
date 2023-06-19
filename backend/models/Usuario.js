@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 
 const usuarioSchema = Schema(
   {
+    _id: Number,
     user: String,
     nombre: String,
     apellido: String,

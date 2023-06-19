@@ -1,23 +1,24 @@
-const mongoose= require('mongoose')
-const { appConfig } =require ('../config')
+const mongoose = require("mongoose");
+const { appConfig } = require("../config");
 
-const Schema = mongoose.Schema
+const idiomaSchema = new mongoose.Schema(
+  {
+    nombre: String,
+    descripcion: String,
+    boton: String,
+    paises: String,
+    imagen: String,
+  },
+  {
+    timestamps: true,
+  }
+);
 
-const idiomaSchema = Schema ({
-nombre: String,
-descripcion: String,
-boton: String,
-paises: String,
-imagen: String,
-},{
+idiomaSchema.methods.setImagen = function setImagen() {
+  const { host, port } = appConfig;
+  this.imagen = `${host}:${port}/public/${filename}`;
+};
 
-    timestamps: true
-});
+const Idioma = mongoose.model("idioma", idiomaSchema);
 
-idiomaSchema.methods.setImagen = function setImagen (){
-
-    const {host, port} = appConfig
-    this.imagen = `${host}:${port}/public/${filename}`
-}
-
-module.exports = mongoose.model('idioma', idiomaSchema)
+module.exports = Idioma

@@ -44,7 +44,7 @@ function BorrarUsuarios() {
                 <Modal.Footer>
                     <AlertUsuarios />
                     <Button variant="danger" type="submit">Borrar usuario(s)</Button>
-                    <Button variant="secondary">Cancelar</Button>
+                    <Button variant="secondary" onClick={handleClose}>Cancelar</Button>
                 </Modal.Footer>
             </Modal>
         </div>
