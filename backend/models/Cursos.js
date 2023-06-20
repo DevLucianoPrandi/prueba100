@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
-
-const cursoSchema = Schema(
+const cursoSchema = new mongoose.Schema(
   {
     _id: Number,
     idioma: String,
@@ -15,4 +13,6 @@ const cursoSchema = Schema(
   }
 );
 
-module.exports = mongoose.model("cursos", cursoSchema);
+const Curso = mongoose.model("curso", cursoSchema);
+
+module.exports = Curso

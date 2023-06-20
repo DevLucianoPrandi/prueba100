@@ -27,15 +27,16 @@ export const AdmCursos = () => {
 
     return (
         <><Container className='d-flex justify-content-between fluid w-50 '>
+
             <CrearCursos />
             <ActCursos />
             <BorrarCursos />
+
         </Container>
             <Container className=' fluid'>
+                {cursos.map(({_id, idioma, dia, horario, modalidad }) => (
 
-                {cursos.map(({ idioma, dia, horario, modalidad }) => (
-
-                    <ListGroup as="ol" numbered className='m-3' style={{ border: '3px solid grey' }}>
+                    <ListGroup key={_id} as="ol" numbered className='m-3' style={{ border: '3px solid grey' }}>
                         <ListGroup.Item
                             as="li"
                             className="d-flex justify-content-between align-items-start"
@@ -51,7 +52,7 @@ export const AdmCursos = () => {
                             className="d-flex justify-content-between align-items-start"
                         >
                             <div className="ms-2 me-auto">
-                                <div className="fw-bold">Día(s) de cursada</div>
+                                <div className="fw-bold">`Día(s) de cursada`</div>
                                 {dia}
                             </div>
                         </ListGroup.Item>

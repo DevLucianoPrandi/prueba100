@@ -38,40 +38,6 @@ export async function getIdiomas() {
   }
 }
 
-export async function saveIdioma(idiomaData) {
-  const formData = new FormData();
-  formData.append("nombre", idiomaData.nombre);
-  formData.append("descripcion", idiomaData.descripcion);
-  formData.append("paises", idiomaData.paises);
-  formData.append("boton", idiomaData.boton);
-  formData.append("imagen", idiomaData.imagen);
-  try {
-    console.log(idiomaData);
-    const response = await axios({
-      url: `${baseUrl}/idiomas`,
-      method: "POST",
-      data: formData,
-    });
-    return response;
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-export async function saveCursos(cursosData) {
-  try {
-    console.log(cursosData);
-    const response = await axios({
-      url: `${baseUrl}/cursos`,
-      method: "POST",
-      data: cursosData,
-    });
-    return response;
-  } catch (e) {
-    console.log(e);
-  }
-}
-
 export async function saveUsuario(usuarioData) {
   const formData = new FormData();
   formData.append("usuario", usuarioData.usuario);
@@ -98,12 +64,96 @@ export async function saveUsuario(usuarioData) {
   }
 }
 
+export async function saveCursos(cursosData) {
+  try {
+    console.log(cursosData);
+    const response = await axios({
+      url: `${baseUrl}/cursos`,
+      method: "POST",
+      data: cursosData,
+    });
+    return response;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function saveIdioma(idiomaData) {
+  const formData = new FormData();
+  formData.append("nombre", idiomaData.nombre);
+  formData.append("descripcion", idiomaData.descripcion);
+  formData.append("paises", idiomaData.paises);
+  formData.append("boton", idiomaData.boton);
+  formData.append("imagen", idiomaData.imagen);
+  try {
+    console.log(idiomaData);
+    const response = await axios({
+      url: `${baseUrl}/idiomas`,
+      method: "POST",
+      data: formData,
+    });
+    return response;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function updateUsuarios(_id, datosNuevos) {
+  try {
+    const response = await axios({
+      url: `${baseUrl}/usuarios/${_id}`,
+      method: "PUT",
+      data: datosNuevos,
+    });
+    return response;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function updateCursos(_id, datosNuevos) {
+  try {
+    const response = await axios({
+      url: `${baseUrl}/cursos/${_id}`,
+      method: "PUT",
+      data: datosNuevos,
+    });
+    return response;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export async function updateIdioma(_id, datosNuevos) {
   try {
     const response = await axios({
       url: `${baseUrl}/idiomas/${_id}`,
       method: "PUT",
       data: datosNuevos,
+    });
+    return response;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function deleteUsuario(_id) {
+  try {
+    const response = await axios({
+      url: `${baseUrl}/usuarios/${_id}`,
+      method: "DELETE",
+    });
+    return response;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function deleteCurso(_id) {
+  try {
+    const response = await axios({
+      url: `${baseUrl}/cursos/${_id}`,
+      method: "DELETE",
     });
     return response;
   } catch (e) {

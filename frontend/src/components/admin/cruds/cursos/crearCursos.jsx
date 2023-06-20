@@ -19,7 +19,10 @@ function CrearCursos() {
 
     const handleSubmit = (cursosData) => {
         saveCursos (cursosData= {idioma: idioma, dia: dia, horario: horario, modalidad: modalidad})
-        console.log(cursosData);
+        .then((response) => {
+                handleClose()
+                window.location.reload()
+            });
          }
 
     return (
@@ -54,9 +57,14 @@ function CrearCursos() {
                         </Form.Group>
 
                         <Row className="mb-3">
-                            <Form.Group as={Col} controlId="modalidad">
-                                <Form.Label>Modalidad de cursada</Form.Label>
-                                <Form.Control placeholder="Modalidad de cursada"  name='modalidad' onChange={(event) => {setModalidad(event.target.value)}}/>
+                        <Form.Group as={Col} controlId="modalidad">
+                                <Form.Select className='mb-3' name='modalidad' onChange={(event) => { setModalidad(event.target.value)}}>
+                                    <option>Seleccioná una modalidad</option>
+                                    <option  value="extensivo">Extensivo</option>
+                                    <option  value="intensivo">Intensivo</option>
+                                    <option  value="conversación">Conversación</option>
+                                    <option  value="literatura">Literatura</option>
+                                </Form.Select>
                             </Form.Group>
                         </Row>
                     </Form>

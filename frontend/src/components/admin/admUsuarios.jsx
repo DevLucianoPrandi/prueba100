@@ -34,9 +34,9 @@ export const AdmUsuarios = () => {
         </Container>
             <Container className=' fluid'>
 
-                {usuarios.map(({ nombre, apellido, fechadenac, dni, telefono, email, usuario, imagen, categoria }) => (
+                {usuarios.map(({_id, nombre, apellido, fechadenac, dni, telefono, email, usuario, imagen, categoria }) => (
 
-                    <ListGroup as="ol" numbered className='m-3' style={{ border: '3px solid grey' }}>
+                    <ListGroup key={_id} as="ol" numbered className='m-3' style={{ border: '3px solid grey' }}>
                         <ListGroup.Item
                             as="li"
                             className="d-flex justify-content-between align-items-start" variant='success'>

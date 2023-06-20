@@ -32,7 +32,7 @@ export const AdmIdiomas = () => {
             <CrearIdiomas />
             <ActIdiomas />
             <BorrarIdiomas />
-            
+
         </Container>
 
             <Container className='fluid'>

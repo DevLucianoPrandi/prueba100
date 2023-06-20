@@ -9,7 +9,6 @@ import { saveUsuario } from '../../services';
 function CrearUsuarios() {
 
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -27,11 +26,11 @@ function CrearUsuarios() {
 
     const handleSubmit = (usuarioData) => {
         saveUsuario(usuarioData = { user: user, nombre: nombre, apellido: apellido, fechadenac: fechadenac, dni: dni, telefono: telefono, email: email, password: password, imagen: `storage/imgs/` + inputFileRef.current.files[0], categoria: categoria })
-        console.log(usuarioData);
-        
+        .then((response) => {
+                handleClose()
+                window.location.reload()
+            });
     }
-
-    const handleChange = (event) => setCategoria(event.target.value);
 
     return (
         <div
@@ -41,14 +40,14 @@ function CrearUsuarios() {
             <Button className=' shadow m-3' variant="success" type="submit" value="Enviar" onClick={handleShow}>Crear usuario</Button>
             <Modal show={show} onHide={handleClose} animation={false}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Crear un usuario</Modal.Title>
+                    <Modal.Title>Crear un/a usuario/a</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
                     <Form>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="usuario">
-                                <Form.Label>Nombre de usuario</Form.Label>
+                                <Form.Label>Nombre de usuario/a</Form.Label>
                                 <Form.Control placeholder="Ingresá un nombre de usuario" name='user' onChange={(event) => { setUser(event.target.value) }} />
                             </Form.Group>
                         </Row>
@@ -104,12 +103,11 @@ function CrearUsuarios() {
                         </Form.Group>
 
                         <Row className="mb-3">
-                            <Form.Group as={Col} controlId="categoria">
-                                <Form.Label>Seleccioná categoría</Form.Label>
-                                <Form.Select value={categoria} onChange={handleChange} name='categoria'>
-                                    <option>Seleccioná un categoría</option>
-                                    <option value="alumno">Alumno</option>
-                                    <option value="administrador">Administrador</option>
+                        <Form.Group as={Col} controlId="categoria">
+                                <Form.Select className='mb-3' name='categoria' onChange={(event) => { setCategoria(event.target.value) }}>
+                                    <option>Seleccioná una categoría</option>
+                                    <option  value="alumno">Alumno</option>
+                                    <option  value="administrador">Administrador</option>
                                 </Form.Select>
                             </Form.Group>
                         </Row>

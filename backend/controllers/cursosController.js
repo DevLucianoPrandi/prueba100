@@ -20,11 +20,46 @@ async function addCurso(req, res) {
 }
 
 async function getCursos(req, res) {
-  const cursos = await Curso.find().lean().exec();
-  res.status(200).send({ cursos });
+   try {
+    const cursos = await Curso.find();
+    res.status(200).send ({cursos})
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 }
+
+async function findCursos(req, res) {
+  try {
+    const cursos = await Curso.findById(req.params.id);
+    res.status(201).send({ cursos });
+  } catch (e) {
+    res.status(500).send({ message: e.message });
+  }
+}
+
+async function updateCursos(req, res) {
+  try {
+    const cursos = await Curso.findByIdAndUpdate(req.params.id, req.body, {new: true});
+    res.status(201).send({ cursos });
+  } catch (e) {
+    res.status(400).send({ message: e.message });
+  }
+}
+
+async function deleteCursos(req, res) {
+  try {
+    const cursos = await Curso.findByIdAndDelete(req.params.id);
+    res.status(200).send({ cursos });
+  } catch (e) {
+    res.status(500).send({ message: e.message });
+  }
+}
+
 
 module.exports = {
   addCurso,
   getCursos,
+  findCursos,
+  updateCursos,
+  deleteCursos
 };

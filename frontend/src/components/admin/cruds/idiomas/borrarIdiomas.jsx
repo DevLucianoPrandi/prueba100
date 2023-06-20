@@ -1,10 +1,9 @@
 import Button from 'react-bootstrap/Button';
-import React, { useState, useEffect, useRef } from 'react';
-import { getIdiomas } from '../../services';
+import React, { useState, useEffect } from 'react';
+import { getIdiomas, deleteIdioma } from '../../services';
 import Modal from 'react-bootstrap/Modal';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import { deleteIdioma } from '../../services';
 import Container from 'react-bootstrap/esm/Container';
 
 function BorrarIdiomas() {

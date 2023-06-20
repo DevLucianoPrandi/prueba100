@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
 const { appConfig } = require("../config");
 
-const Schema = mongoose.Schema;
-
-const usuarioSchema = Schema(
+const usuarioSchema = new mongoose.Schema(
   {
     _id: Number,
     user: String,
@@ -27,4 +25,6 @@ usuarioSchema.methods.setImagen = function setImagen() {
   this.imagen = `${host}:${port}/public/${filename}`;
 };
 
-module.exports = mongoose.model("usuario", usuarioSchema);
+const Usuario = mongoose.model("usuario", usuarioSchema);
+
+module.exports = Usuario
