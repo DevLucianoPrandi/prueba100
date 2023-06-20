@@ -1,17 +1,17 @@
 import Button from 'react-bootstrap/Button';
 import React, { useState, useEffect, useRef } from 'react';
-import { getIdiomas } from '../../services';
+import { getIdiomas, updateIdioma } from '../../services';
 import Modal from 'react-bootstrap/Modal';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import { updateIdioma } from '../../services';
 import Container from 'react-bootstrap/esm/Container';
 
 function ActIdiomas() {
 
     const [idiomas, setIdiomas] = useState([])
-    const [formulario, setFormulario] = useState({});
+    const [idiomaSel, setIdiomaSel] = useState({});
+    const [datosIdioma, setDatosIdioma] = useState({})
 
     useEffect(() => {
         async function cargaIdiomas() {
@@ -24,24 +24,44 @@ function ActIdiomas() {
         cargaIdiomas()
     }, [])
 
-    const handleSeleccionarIdioma = (idioma) => {
-        setFormulario(idioma._id);
+    const handleSelIdioma = (event) => {
+        setIdiomaSel(event.target.value);
+        setDatosIdioma(idiomaSel);;
     };
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [nombre, setNombre] = useState("");
-    const [descripcion, setDescripcion] = useState("");
-    const [paises, setPaises] = useState("");
-    const [boton, setBoton] = useState("");
-
     const inputFileRef = useRef()
 
-    const handleSubmit = (idiomaData) => {
-        updateIdioma(idiomaData = { nombre: nombre, descripcion: descripcion, paises: paises, boton: boton, imagen: `storage/imgs/` + inputFileRef.current.files[0] })
-        console.log(idiomaData);
+    const handleSubmit = () => {
+        const newNombre = datosIdioma.nombre;
+        const newDescripcion = datosIdioma.descripcion;
+        const newPaises = datosIdioma.paises;
+        const newBoton = datosIdioma.boton;
+
+        const datosNuevos = {
+            nombre: newNombre,
+            descripcion: newDescripcion,
+            pais: newPaises,
+            boton: newBoton,
+            imagen: `storage/imgs/` + inputFileRef.current.files[0],
+        }
+
+        const confirmActualizar = window.confirm(`¿Estás seguro de que deseas actualizar este idioma?`);
+
+        if (confirmActualizar) {
+            updateIdioma(idiomaSel, datosNuevos)
+                .then((response) => {
+                    handleClose()
+                    window.location.reload()
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+
     }
 
     return (
@@ -59,39 +79,37 @@ function ActIdiomas() {
                     <Container>
                         <Form>
                             <Form.Group as={Col} controlId="idioma">
-                                <Form.Select className='mb-3'>
+                                <Form.Select className='mb-3' value={idiomaSel} onChange={handleSelIdioma}>
                                     {idiomas.map((idiomas) => (
-                                        <option key={idiomas._id}>
-                                            <button onClick={() => handleSeleccionarIdioma(idiomas._id)}>
-                                                {idiomas.nombre}
-                                            </button>
+                                        <option key={idiomas._id} value={idiomas._id}>
+                                            {idiomas.nombre}
                                         </option>
                                     ))
                                     }
                                     console.log(idiomas);
                                 </Form.Select>
                             </Form.Group>
-                            {idiomas._id && (
+                            {(
                                 <div><Row className="mb-3">
                                     <Form.Group as={Col} controlId="nombre">
                                         <Form.Label>Idioma</Form.Label>
-                                        <Form.Control placeholder={idiomas.nombre || ''} name='nombre' onChange={(event) => { setNombre(event.target.value); }} />
+                                        <Form.Control placeholder={idiomas.nombre || ''} name='nombre' onChange={(event) => { setDatosIdioma({ ...datosIdioma, nombre: event.target.value, }); }} />
                                     </Form.Group>
                                 </Row><Row className="mb-3">
                                         <Form.Group as={Col} controlId="descripcion">
                                             <Form.Label>Descripción</Form.Label>
-                                            <Form.Control name='descripcion' placeholder={idiomas.descripcion || ''} onChange={(event) => { setDescripcion(event.target.value); }} />
+                                            <Form.Control name='descripcion' placeholder={idiomas.descripcion || ''} onChange={(event) => { setDatosIdioma({ ...datosIdioma, descripción: event.target.value, }); }} />
                                         </Form.Group>
                                     </Row><Form.Group className="mb-3" controlId="paises">
                                         <Form.Label>Países</Form.Label>
-                                        <Form.Control placeholder={idiomas.pises || ''} name='paises' onChange={(event) => { setPaises(event.target.value); }} />
+                                        <Form.Control placeholder={idiomas.pises || ''} name='paises' onChange={(event) => { setDatosIdioma({ ...datosIdioma, paises: event.target.value, }); }} />
                                     </Form.Group><Form.Group controlId="imagen" className="mb-3">
                                         <Form.Label>Seleccionar bandera</Form.Label>
                                         <Form.Control type="file" ref={inputFileRef} />
                                     </Form.Group><Row className="mb-3">
                                         <Form.Group as={Col} controlId="boton">
                                             <Form.Label>Texto para el botón</Form.Label>
-                                            <Form.Control placeholder={idiomas.boton || ''} name='boton' onChange={(event) => { setBoton(event.target.value); }} />
+                                            <Form.Control placeholder={idiomas.boton || ''} name='boton' onChange={(event) => { setDatosIdioma({ ...datosIdioma, boton: event.target.value, }); }} />
                                         </Form.Group>
                                     </Row></div>
                             )}

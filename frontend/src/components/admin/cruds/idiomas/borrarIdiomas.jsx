@@ -33,8 +33,19 @@ function BorrarIdiomas() {
     const handleShow = () => setShow(true);
 
     const handleDelete = () => {
+        const confirmDelete = window.confirm("¿Estás seguro de que deseas eliminar este idioma?");
+
+        if (confirmDelete) {
         deleteIdioma(idiomaSel)
-    };
+        .then ((response) => {
+            handleClose()
+            window.location.reload()
+        })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+};
 
     return (
         <div

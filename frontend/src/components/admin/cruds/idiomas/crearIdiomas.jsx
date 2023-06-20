@@ -12,17 +12,20 @@ function CrearIdiomas() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [nombre,setNombre] = useState ("");
-    const [descripcion, setDescripcion] = useState ("");
-    const [paises, setPaises] = useState ("");
-    const [boton, setBoton] = useState ("");
+    const [nombre, setNombre] = useState("");
+    const [descripcion, setDescripcion] = useState("");
+    const [paises, setPaises] = useState("");
+    const [boton, setBoton] = useState("");
 
     const inputFileRef = useRef()
 
     const handleSubmit = (idiomaData) => {
-            saveIdioma(idiomaData = { nombre: nombre, descripcion: descripcion, paises: paises, boton: boton, imagen: `storage/imgs/` + inputFileRef.current.files[0] });
-            console.log(idiomaData);
-        }
+        saveIdioma(idiomaData = { nombre: nombre, descripcion: descripcion, paises: paises, boton: boton, imagen: `storage/imgs/` + inputFileRef.current.files[0] })
+            .then((response) => {
+                handleClose()
+                window.location.reload()
+            });
+    }
 
     return (
         <div
@@ -40,19 +43,19 @@ function CrearIdiomas() {
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="nombre">
                                 <Form.Label>Idioma</Form.Label>
-                                <Form.Control placeholder="Nombre del idioma" name='nombre' onChange={(event) => {setNombre(event.target.value)}} />
+                                <Form.Control placeholder="Nombre del idioma" name='nombre' onChange={(event) => { setNombre(event.target.value) }} />
                             </Form.Group>
                         </Row>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="descripcion">
                                 <Form.Label>Descripción</Form.Label>
-                                <Form.Control name='descripcion' placeholder="Descripción del idioma" onChange={(event) => {setDescripcion(event.target.value)}} />
+                                <Form.Control name='descripcion' placeholder="Descripción del idioma" onChange={(event) => { setDescripcion(event.target.value) }} />
                             </Form.Group>
                         </Row>
 
                         <Form.Group className="mb-3" controlId="paises">
                             <Form.Label>Países</Form.Label>
-                            <Form.Control placeholder="Países en los que se habla el idioma" name='paises' onChange={(event) => {setPaises(event.target.value)}} />
+                            <Form.Control placeholder="Países en los que se habla el idioma" name='paises' onChange={(event) => { setPaises(event.target.value) }} />
                         </Form.Group>
 
                         <Form.Group controlId="imagen" className="mb-3">
@@ -63,7 +66,7 @@ function CrearIdiomas() {
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="boton">
                                 <Form.Label>Texto para el botón</Form.Label>
-                                <Form.Control placeholder="Texto que se mostrará en el botón" name='boton' onChange={(event) => {setBoton(event.target.value)}} />
+                                <Form.Control placeholder="Texto que se mostrará en el botón" name='boton' onChange={(event) => { setBoton(event.target.value) }} />
                             </Form.Group>
                         </Row>
                     </Form>
