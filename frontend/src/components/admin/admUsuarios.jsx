@@ -34,7 +34,7 @@ export const AdmUsuarios = () => {
         </Container>
             <Container className=' fluid'>
 
-                {usuarios.map(({_id, nombre, apellido, fechadenac, dni, telefono, email, usuario, imagen, categoria }) => (
+                {usuarios.map(({_id, user, nombre, apellido, fechadenac, dni, telefono, email, imagen, categoria }) => (
 
                     <ListGroup key={_id} as="ol" numbered className='m-3' style={{ border: '3px solid grey' }}>
                         <ListGroup.Item
@@ -50,7 +50,7 @@ export const AdmUsuarios = () => {
                         >
                             <div className="ms-2 me-auto">
                                 <div className="fw-bold">Nombre de usuario</div>
-                                {usuario}
+                                {user}
                             </div>
                         </ListGroup.Item>
                         <ListGroup.Item

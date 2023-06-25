@@ -3,7 +3,6 @@ const { appConfig } = require("../config");
 
 const usuarioSchema = new mongoose.Schema(
   {
-    _id: Number,
     user: String,
     nombre: String,
     apellido: String,
@@ -22,7 +21,7 @@ const usuarioSchema = new mongoose.Schema(
 
 usuarioSchema.methods.setImagen = function setImagen() {
   const { host, port } = appConfig;
-  this.imagen = `${host}:${port}/public/${filename}`;
+  this.imagen = `${host}:${port}/public/storage/imgs/${filename}`;
 };
 
 const Usuario = mongoose.model("usuario", usuarioSchema);

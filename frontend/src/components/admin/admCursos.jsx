@@ -14,19 +14,21 @@ export const AdmCursos = () => {
         async function cargaCursos() {
             const response = await getCursos()
 
+
             if (response.status === 200) {
                 setCursos(response.data.cursos)
             }
         }
         cargaCursos()
     }, [])
+    console.log(cursos);
 
     if (!cursos.length) {
         return <div className='text-center'>Cargando contenido...</div>
     }
 
     return (
-        <><Container className='d-flex justify-content-between fluid w-50 '>
+        <><Container className='d-flex justify-content-around fluid w-50'>
 
             <CrearCursos />
             <ActCursos />
@@ -52,7 +54,7 @@ export const AdmCursos = () => {
                             className="d-flex justify-content-between align-items-start"
                         >
                             <div className="ms-2 me-auto">
-                                <div className="fw-bold">`Día(s) de cursada`</div>
+                                <div className="fw-bold">Día/s de cursada</div>
                                 {dia}
                             </div>
                         </ListGroup.Item>

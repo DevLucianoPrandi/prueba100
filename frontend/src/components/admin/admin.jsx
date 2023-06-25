@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import Container from 'react-bootstrap/esm/Container';
 import AdmUsuarios from './admUsuarios';
 import AdmIdiomas from './admIdiomas';
 import AdmCursos from './admCursos';
@@ -10,22 +11,25 @@ function Admin() {
   const [key, setKey] = useState('cursos');
 
   return (
-    <Tabs
-      activeKey={key}
-      onSelect={(k) => setKey(k)}
-      className="mb-3"
-    >
-      <Tab eventKey="cursos" title="Cursos">
-        <AdmCursos />
-      </Tab>
-      <Tab eventKey="usuarios" title="Usuarios">
-        <AdmUsuarios />
-      </Tab>
-      <Tab eventKey="idiomas" title="Idiomas">
-        <AdmIdiomas />
-      </Tab>
+    <Container className='my-4 px-0 pb-3' style={{border: '0.1rem solid rgba(10, 10, 10, 0.1)', borderRadius:'0.5rem'}}>
+      <Tabs
+        activeKey={key}
+        onSelect={(k) => setKey(k)}
+        className="mb-3"
+      >
+        <Tab title=" " ></Tab>
+        <Tab eventKey="cursos" title="Cursos">
+          <AdmCursos />
+        </Tab>
+        <Tab eventKey="usuarios" title="Usuarios">
+          <AdmUsuarios />
+        </Tab>
+        <Tab eventKey="idiomas" title="Idiomas">
+          <AdmIdiomas />
+        </Tab>
 
-    </Tabs>
+      </Tabs>
+    </Container>
   );
 }
 

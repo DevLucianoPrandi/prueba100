@@ -34,15 +34,15 @@ function ActCursos() {
     const handleShow = () => setShow(true);
 
     const handleSubmit = () => {
-        const newCurso = datosCurso.nombre;
+        const newIdioma = datosCurso.idioma;
         const newDia = datosCurso.dia;
         const newHorario = datosCurso.horario;
         const newModalidad = datosCurso.modalidad;
 
         const datosNuevos = {
-            nombre: newCurso,
+            idioma: newIdioma,
             dia: newDia,
-            pais: newHorario,
+            horario: newHorario,
             modalidad: newModalidad,
         }
 
@@ -79,7 +79,7 @@ function ActCursos() {
                                 <Form.Select className='mb-3' value={cursoSel} onChange={handleSelCurso}>
                                     {cursos.map((cursos) => (
                                         <option key={cursos._id} value={cursos._id}>
-                                            {cursos.nombre}
+                                            {cursos.idioma}
                                         </option>
                                     ))
                                     }
@@ -90,19 +90,19 @@ function ActCursos() {
                                 <div><Row className="mb-3">
                                     <Form.Group as={Col} controlId="nombre">
                                         <Form.Label>Curso</Form.Label>
-                                        <Form.Control placeholder={cursos.nombre || ''} name='nombre' onChange={(event) => { setDatosCurso({ ...datosCurso, nombre: event.target.value, }); }} />
+                                        <Form.Control placeholder={cursos.idioma || ''} name='idioma' onChange={(event) => { setDatosCurso({ ...datosCurso, idioma: event.target.value, }); } } />
                                     </Form.Group>
                                 </Row><Row className="mb-3">
                                         <Form.Group as={Col} controlId="dia">
-                                            <Form.Label>Descripción</Form.Label>
-                                            <Form.Control name='dia' placeholder={cursos.dia || ''} onChange={(event) => { setDatosCurso({ ...datosCurso, descripción: event.target.value, }); }} />
+                                            <Form.Label>Día/s</Form.Label>
+                                            <Form.Control name='dia' placeholder={cursos.dia || ''} onChange={(event) => { setDatosCurso({ ...datosCurso, dia: event.target.value, }); }} />
                                         </Form.Group>
                                     </Row><Form.Group className="mb-3" controlId="horario">
-                                        <Form.Label>Países</Form.Label>
-                                        <Form.Control placeholder={cursos.pises || ''} name='horario' onChange={(event) => { setDatosCurso({ ...datosCurso, horario: event.target.value, }); }} />
+                                        <Form.Label>Horario</Form.Label>
+                                        <Form.Control placeholder={cursos.horario || ''} name='horario' onChange={(event) => { setDatosCurso({ ...datosCurso, horario: event.target.value, }); }} />
                                     </Form.Group><Row className="mb-3">
                                         <Form.Group as={Col} controlId="modalidad">
-                                            <Form.Select className='mb-3' value={cursoSel} onChange={(event) => { setDatosCurso({ ...datosCurso, modalidad: event.target.value, }); }}>
+                                            <Form.Select className='mb-3' name='modalidad' onChange={(event) => { setDatosCurso({ ...datosCurso, modalidad: event.target.value, }); }}>
                                                 <option>Seleccioná una modalidad</option>
                                                 <option value="extensivo">Extensivo</option>
                                                 <option value="intensivo">Intensivo</option>

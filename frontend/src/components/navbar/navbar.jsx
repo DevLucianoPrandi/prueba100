@@ -22,17 +22,9 @@ function Navbar() {
             <NavDropdown.Divider />
             <NavDropdown.Item className='linksdrop2' as={Link} to="./calendario">Calendario académico</NavDropdown.Item>
           </NavDropdown>
-          <Link className='links' as={Link} to="./alumnos">Perfil</Link>
+          <Link className='links' as={Link} to="./admin">Administración</Link>
           <Link className='links2' as={Link} to="./contacto">Contacto</Link>
         </ul>
-      </div>
-      <div className='items2'>
-        <NavDropdown className='linksdrop' bg="#0066cc" title="Ingresá" id="nav-dropdown">
-          <NavDropdown.Item className='linksdrop2' as={Link} to="./registro">Registrate</NavDropdown.Item>
-          <NavDropdown.Item className='linksdrop2' as={Link} to="./accAlumnos">Ingresá a tu cuenta</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item className='linksdrop2' as={Link} to="./accAdmin">Administradores</NavDropdown.Item>
-        </NavDropdown>
       </div>
       <Link className='btnReserva' as={Link} to="./reserva">Reservá tus clases!</Link>
     </div>

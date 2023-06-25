@@ -44,7 +44,7 @@ function ActIdiomas() {
         const datosNuevos = {
             nombre: newNombre,
             descripcion: newDescripcion,
-            pais: newPaises,
+            paises: newPaises,
             boton: newBoton,
             imagen: `storage/imgs/` + inputFileRef.current.files[0],
         }
@@ -98,11 +98,11 @@ function ActIdiomas() {
                                 </Row><Row className="mb-3">
                                         <Form.Group as={Col} controlId="descripcion">
                                             <Form.Label>Descripción</Form.Label>
-                                            <Form.Control name='descripcion' placeholder={idiomas.descripcion || ''} onChange={(event) => { setDatosIdioma({ ...datosIdioma, descripción: event.target.value, }); }} />
+                                            <Form.Control name='descripcion' placeholder={idiomas.descripcion || ''} onChange={(event) => { setDatosIdioma({ ...datosIdioma, descripcion: event.target.value, }); }} />
                                         </Form.Group>
                                     </Row><Form.Group className="mb-3" controlId="paises">
                                         <Form.Label>Países</Form.Label>
-                                        <Form.Control placeholder={idiomas.pises || ''} name='paises' onChange={(event) => { setDatosIdioma({ ...datosIdioma, paises: event.target.value, }); }} />
+                                        <Form.Control placeholder={idiomas.paises || ''} name='paises' onChange={(event) => { setDatosIdioma({ ...datosIdioma, paises: event.target.value, }); }} />
                                     </Form.Group><Form.Group controlId="imagen" className="mb-3">
                                         <Form.Label>Seleccionar bandera</Form.Label>
                                         <Form.Control type="file" ref={inputFileRef} />

@@ -22,6 +22,7 @@ function CrearCursos() {
         .then((response) => {
                 handleClose()
                 window.location.reload()
+
             });
          }
 

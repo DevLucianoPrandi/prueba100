@@ -26,10 +26,19 @@ function CrearUsuarios() {
 
     const handleSubmit = (usuarioData) => {
         saveUsuario(usuarioData = { user: user, nombre: nombre, apellido: apellido, fechadenac: fechadenac, dni: dni, telefono: telefono, email: email, password: password, imagen: `storage/imgs/` + inputFileRef.current.files[0], categoria: categoria })
-        .then((response) => {
+            .then((response) => {
                 handleClose()
                 window.location.reload()
             });
+    }
+
+    function mostrarContrasena() {
+        const passwordInput = document.getElementById("password");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
     }
 
     return (
@@ -46,7 +55,7 @@ function CrearUsuarios() {
                 <Modal.Body>
                     <Form>
                         <Row className="mb-3">
-                            <Form.Group as={Col} controlId="usuario">
+                            <Form.Group as={Col} controlId="user">
                                 <Form.Label>Nombre de usuario/a</Form.Label>
                                 <Form.Control placeholder="Ingresá un nombre de usuario" name='user' onChange={(event) => { setUser(event.target.value) }} />
                             </Form.Group>
@@ -94,6 +103,7 @@ function CrearUsuarios() {
                             <Form.Group as={Col} controlId="password">
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type='password' placeholder="Ingresá un password temporal" name='password' onChange={(event) => { setPassword(event.target.value) }} />
+                                <Form.Check className='m-2 content-justify-center' type="switch" id="custom-switch" label="Mostrar contraseña" onClick={mostrarContrasena} />
                             </Form.Group>
                         </Row>
 
@@ -103,11 +113,11 @@ function CrearUsuarios() {
                         </Form.Group>
 
                         <Row className="mb-3">
-                        <Form.Group as={Col} controlId="categoria">
+                            <Form.Group as={Col} controlId="categoria">
                                 <Form.Select className='mb-3' name='categoria' onChange={(event) => { setCategoria(event.target.value) }}>
                                     <option>Seleccioná una categoría</option>
-                                    <option  value="alumno">Alumno</option>
-                                    <option  value="administrador">Administrador</option>
+                                    <option value="alumno">Alumno</option>
+                                    <option value="administrador">Administrador</option>
                                 </Form.Select>
                             </Form.Group>
                         </Row>

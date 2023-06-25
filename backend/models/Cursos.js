@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 const cursoSchema = new mongoose.Schema(
   {
-    _id: Number,
     idioma: String,
     dia: String,
     horario: String,

@@ -64,7 +64,7 @@ function BorrarCursos() {
                                 <Form.Select className='mb-3' value={cursoSel} onChange={handleSelCurso}>
                                     {cursos.map((cursos) => (
                                         <option key={cursos._id} value={cursos._id}>
-                                            {cursos.nombre}
+                                            {cursos.idioma} - {cursos.modalidad}: {cursos.dia}, {cursos.horario}
                                         </option>
                                     ))
                                     }

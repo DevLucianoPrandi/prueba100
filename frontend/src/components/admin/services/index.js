@@ -20,7 +20,7 @@ export async function getCursos() {
       url: `${baseUrl}/cursos`,
       method: "GET",
     });
-    return response.data;
+    return response;
   } catch (e) {
     console.log(e);
   }
@@ -40,7 +40,7 @@ export async function getIdiomas() {
 
 export async function saveUsuario(usuarioData) {
   const formData = new FormData();
-  formData.append("usuario", usuarioData.usuario);
+  formData.append("user", usuarioData.user);
   formData.append("nombre", usuarioData.nombre);
   formData.append("apellido", usuarioData.apellido);
   formData.append("fechadenac", usuarioData.fechadenac);
@@ -52,7 +52,6 @@ export async function saveUsuario(usuarioData) {
   formData.append("categoria", usuarioData.categoria);
 
   try {
-    console.log(usuarioData);
     const response = await axios({
       url: `${baseUrl}/usuarios`,
       method: "POST",
@@ -66,7 +65,6 @@ export async function saveUsuario(usuarioData) {
 
 export async function saveCursos(cursosData) {
   try {
-    console.log(cursosData);
     const response = await axios({
       url: `${baseUrl}/cursos`,
       method: "POST",
@@ -86,7 +84,6 @@ export async function saveIdioma(idiomaData) {
   formData.append("boton", idiomaData.boton);
   formData.append("imagen", idiomaData.imagen);
   try {
-    console.log(idiomaData);
     const response = await axios({
       url: `${baseUrl}/idiomas`,
       method: "POST",

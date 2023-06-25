@@ -9,4 +9,4 @@ api.get('/idiomas/:id', findIdiomas);
 api.put('/idiomas/:id', updateIdiomas);
 api.delete ('/idiomas/:id', deleteIdiomas)
 
-module.exports = api
+module.exports = api 

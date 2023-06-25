@@ -3,7 +3,6 @@ const { appConfig } = require("../config");
 
 const idiomaSchema = new mongoose.Schema(
   {
-    _id: Number,
     nombre: String,
     descripcion: String,
     boton: String,

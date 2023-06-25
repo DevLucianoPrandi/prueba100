@@ -1,6 +1,8 @@
 const express=require('express')
 const bodyParser =require('body-parser')
 const cors = require('cors')
+const session = require('express-session');
+const { MongoClient } = require('mongodb');
 const usuariosRoutes =require ('./routes/usuario')
 const idiomasRoutes =require ('./routes/idioma')
 const cursosRoutes = require('./routes/cursos')
