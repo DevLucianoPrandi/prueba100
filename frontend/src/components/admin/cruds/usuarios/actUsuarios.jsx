@@ -123,7 +123,7 @@ function ActUsuarios() {
 
                         <Form.Group className="mb-3" controlId="fechadenac">
                             <Form.Label>Fecha de nacimiento</Form.Label>
-                            <Form.Control placeholder={usuarios.fechadenac || ''} name='fechadenac' onChange={(event) => { setDatosUsuario({ ...datosUsuario, fechadenac: event.target.value, }); }} />
+                            <Form.Control placeholder={usuarios.fechadenac || ''} name='fechadenac' type='date' onChange={(event) => { setDatosUsuario({ ...datosUsuario, fechadenac: event.target.value, }); }} />
                         </Form.Group>
 
                         <Row className="mb-3">

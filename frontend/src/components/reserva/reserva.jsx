@@ -15,7 +15,7 @@ const Reserva = () => {
     const sendEmail = (e) => {
         e.preventDefault();
 
-        emailjs.sendForm('service_zszajus', 'template_og5q5ra', e.target, 'f4Lf9VKH78FLlY98I')
+        emailjs.sendForm('service_dy9buyd', 'template_og5q5ra', e.target, 'xo7OPYyEaHwRz_u9Y')
             .then((result) => {
                 console.log(result.text);
             }, (error) => {
