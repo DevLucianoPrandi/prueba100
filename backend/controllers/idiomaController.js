@@ -2,9 +2,9 @@ const Idioma = require("../models/Idioma");
 
 async function addIdioma(req, res) {
   try {
-    const {nombre, descripcion, boton, paises, imagen} = req.body;
+    const { nombre, descripcion, boton, paises, imagen } = req.body;
 
-const idioma = Idioma({nombre, descripcion, boton, paises, imagen,});
+    const idioma = Idioma({ nombre, descripcion, boton, paises, imagen, });
 
     if (req.file) {
       const { filename } = req.file;
@@ -19,9 +19,9 @@ const idioma = Idioma({nombre, descripcion, boton, paises, imagen,});
 }
 
 async function getIdiomas(req, res) {
-   try {
+  try {
     const idiomas = await Idioma.find();
-    res.status(200).send ({idiomas})
+    res.status(200).send({ idiomas });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -38,7 +38,9 @@ async function findIdiomas(req, res) {
 
 async function updateIdiomas(req, res) {
   try {
-    const idiomas = await Idioma.findByIdAndUpdate(req.params.id, req.body, {new: true});
+    const idiomas = await Idioma.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
     res.status(201).send({ idiomas });
   } catch (e) {
     res.status(400).send({ message: e.message });
@@ -54,11 +56,10 @@ async function deleteIdiomas(req, res) {
   }
 }
 
-
 module.exports = {
   addIdioma,
   getIdiomas,
   findIdiomas,
   updateIdiomas,
-  deleteIdiomas
+  deleteIdiomas,
 };

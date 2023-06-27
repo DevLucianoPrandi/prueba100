@@ -14,7 +14,7 @@ const idiomaSchema = new mongoose.Schema(
   }
 );
 
-idiomaSchema.methods.setImagen = function setImagen() {
+idiomaSchema.methods.setImagen = function setImagen(filename) {
   const { host, port } = appConfig;
   this.imagen = `${host}:${port}/public/${filename}`;
 };

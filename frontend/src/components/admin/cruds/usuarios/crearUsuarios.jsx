@@ -25,7 +25,18 @@ function CrearUsuarios() {
     const inputFileRef = useRef()
 
     const handleSubmit = (usuarioData) => {
-        saveUsuario(usuarioData = { user: user, nombre: nombre, apellido: apellido, fechadenac: fechadenac, dni: dni, telefono: telefono, email: email, password: password, imagen: `storage/imgs/` + inputFileRef.current.files[0], categoria: categoria })
+        saveUsuario(usuarioData = {
+            user: user,
+            nombre: nombre,
+            apellido: apellido,
+            fechadenac: fechadenac,
+            dni: dni,
+            telefono: telefono,
+            email: email, password: password,
+            imagen: inputFileRef.current.files[0],
+            categoria: categoria,
+        })
+
             .then((response) => {
                 handleClose()
                 window.location.reload()
@@ -40,7 +51,6 @@ function CrearUsuarios() {
             passwordInput.type = "password";
         }
     }
-
     return (
         <div
             className="modal show"
@@ -57,32 +67,32 @@ function CrearUsuarios() {
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="user">
                                 <Form.Label>Nombre de usuario/a</Form.Label>
-                                <Form.Control placeholder="Ingresá un nombre de usuario" name='user' onChange={(event) => { setUser(event.target.value) }} />
+                                <Form.Control placeholder="Ingresá un nombre de usuario" name='user' onChange={(event) => { setUser(event.target.value) }} required/>
                             </Form.Group>
                         </Row>
 
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="nombre">
                                 <Form.Label>Nombre</Form.Label>
-                                <Form.Control placeholder="Nombre" name='nombre' onChange={(event) => { setNombre(event.target.value) }} />
+                                <Form.Control placeholder="Nombre" name='nombre' onChange={(event) => { setNombre(event.target.value) }} required/>
                             </Form.Group>
                         </Row>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="apellido">
                                 <Form.Label>Apellido</Form.Label>
-                                <Form.Control placeholder="Apellido" name='apellido' onChange={(event) => { setApellido(event.target.value) }} />
+                                <Form.Control placeholder="Apellido" name='apellido' onChange={(event) => { setApellido(event.target.value) }} required/>
                             </Form.Group>
                         </Row>
 
                         <Form.Group className="mb-3" controlId="fechadenac">
                             <Form.Label>Fecha de nacimiento</Form.Label>
-                            <Form.Control placeholder="Ingresá la fecha de nacimiento" name='fechadenac' type='date' onChange={(event) => { setFechadenac(event.target.value) }} />
+                            <Form.Control placeholder="Ingresá la fecha de nacimiento" name='fechadenac' type='date' onChange={(event) => { setFechadenac(event.target.value) }} required/>
                         </Form.Group>
 
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="dni">
                                 <Form.Label>Número de DNI</Form.Label>
-                                <Form.Control placeholder="Ingresá número de DNI sin puntos ni espacios" name='dni' onChange={(event) => { setDni(event.target.value) }} />
+                                <Form.Control placeholder="Ingresá número de DNI sin puntos ni espacios" name='dni' onChange={(event) => { setDni(event.target.value) }} required/>
                             </Form.Group>
                         </Row>
 
@@ -96,13 +106,13 @@ function CrearUsuarios() {
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="email">
                                 <Form.Label>Correo electrónico</Form.Label>
-                                <Form.Control type='email' placeholder="Ingresá un correo electrónico" name='email' onChange={(event) => { setEmail(event.target.value) }} />
+                                <Form.Control type='email' placeholder="Ingresá un correo electrónico" name='email' onChange={(event) => { setEmail(event.target.value) }} required/>
                             </Form.Group>
                         </Row>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="password">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type='password' placeholder="Ingresá un password temporal" name='password' onChange={(event) => { setPassword(event.target.value) }} />
+                                <Form.Control type='password' placeholder="Ingresá un password temporal" name='password' onChange={(event) => { setPassword(event.target.value) }} required/>
                                 <Form.Check className='m-2 content-justify-center' type="switch" id="custom-switch" label="Mostrar contraseña" onClick={mostrarContrasena} />
                             </Form.Group>
                         </Row>
@@ -114,7 +124,7 @@ function CrearUsuarios() {
 
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="categoria">
-                                <Form.Select className='mb-3' name='categoria' onChange={(event) => { setCategoria(event.target.value) }}>
+                                <Form.Select className='mb-3' name='categoria' onChange={(event) => { setCategoria(event.target.value) }} required>
                                     <option>Seleccioná una categoría</option>
                                     <option value="alumno">Alumno</option>
                                     <option value="administrador">Administrador</option>
@@ -126,7 +136,7 @@ function CrearUsuarios() {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="success" type="submit" onClick={handleSubmit} >Agregar usuario</Button>
+                    <Button variant="success" type="submit" onClick={handleSubmit}  >Agregar usuario</Button>
                     <Button variant="danger" onClick={handleClose}>Cancelar</Button>
                 </Modal.Footer>
             </Modal>

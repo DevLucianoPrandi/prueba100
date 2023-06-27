@@ -39,6 +39,16 @@ export const AdmIdiomas = () => {
                 {idiomas.map(({ _id, nombre, descripcion, boton, paises, imagen }) => (
 
                     <ListGroup key={_id} as="ol" numbered className='m-3' style={{ border: '3px solid grey' }}>
+
+                        <ListGroup.Item
+                            as="li"
+                            className="d-flex justify-content-between align-items-start"
+                        >
+                            <div className="ms-2 me-auto">
+                                <div className="fw-bold">Idioma</div>
+                                {nombre}
+                            </div>
+                        </ListGroup.Item>
                         <ListGroup.Item
                             as="li"
                             className="d-flex justify-content-between align-items-start"
@@ -49,14 +59,6 @@ export const AdmIdiomas = () => {
                             </div>
                         </ListGroup.Item>
                         <ListGroup.Item
-                            as="li"
-                            className="d-flex justify-content-between align-items-start"
-                        >
-                            <div className="ms-2 me-auto">
-                                <div className="fw-bold">Idioma</div>
-                                {nombre}
-                            </div>
-                        </ListGroup.Item><ListGroup.Item
                             as="li"
                             className="d-flex justify-content-between align-items-start"
                         >

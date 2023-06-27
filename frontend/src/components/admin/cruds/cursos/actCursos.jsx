@@ -1,5 +1,5 @@
 import Button from 'react-bootstrap/Button';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { getCursos, updateCursos } from '../../services';
 import Modal from 'react-bootstrap/Modal';
 import Col from 'react-bootstrap/Col';
@@ -33,17 +33,21 @@ function ActCursos() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+     const inputFileRef = useRef()
+
     const handleSubmit = () => {
         const newIdioma = datosCurso.idioma;
         const newDia = datosCurso.dia;
         const newHorario = datosCurso.horario;
         const newModalidad = datosCurso.modalidad;
+        const newImagen= inputFileRef.current.files[0];
 
         const datosNuevos = {
             idioma: newIdioma,
             dia: newDia,
             horario: newHorario,
             modalidad: newModalidad,
+            imagen: newImagen,
         }
 
         const confirmActualizar = window.confirm(`¿Estás seguro de que deseas actualizar este curso?`);
@@ -79,7 +83,7 @@ function ActCursos() {
                                 <Form.Select className='mb-3' value={cursoSel} onChange={handleSelCurso}>
                                     {cursos.map((cursos) => (
                                         <option key={cursos._id} value={cursos._id}>
-                                            {cursos.idioma}
+                                            {cursos.idioma} - {cursos.dia} - {cursos.horario} - {cursos.modalidad}
                                         </option>
                                     ))
                                     }
@@ -92,7 +96,12 @@ function ActCursos() {
                                         <Form.Label>Curso</Form.Label>
                                         <Form.Control placeholder={cursos.idioma || ''} name='idioma' onChange={(event) => { setDatosCurso({ ...datosCurso, idioma: event.target.value, }); } } />
                                     </Form.Group>
-                                </Row><Row className="mb-3">
+                                </Row>
+                                <Row className='mb-3'><Form.Group controlId="imagen" className="mb-3">
+                            <Form.Label>Seleccionar bandera</Form.Label>
+                            <Form.Control type="file" ref={inputFileRef} />
+                        </Form.Group></Row>
+                                <Row className="mb-3">
                                         <Form.Group as={Col} controlId="dia">
                                             <Form.Label>Día/s</Form.Label>
                                             <Form.Control name='dia' placeholder={cursos.dia || ''} onChange={(event) => { setDatosCurso({ ...datosCurso, dia: event.target.value, }); }} />
@@ -100,7 +109,8 @@ function ActCursos() {
                                     </Row><Form.Group className="mb-3" controlId="horario">
                                         <Form.Label>Horario</Form.Label>
                                         <Form.Control placeholder={cursos.horario || ''} name='horario' onChange={(event) => { setDatosCurso({ ...datosCurso, horario: event.target.value, }); }} />
-                                    </Form.Group><Row className="mb-3">
+                                    </Form.Group>
+                                    <Row className="mb-3">
                                         <Form.Group as={Col} controlId="modalidad">
                                             <Form.Select className='mb-3' name='modalidad' onChange={(event) => { setDatosCurso({ ...datosCurso, modalidad: event.target.value, }); }}>
                                                 <option>Seleccioná una modalidad</option>

@@ -6,7 +6,7 @@ const api= express.Router()
 api.post('/usuarios', upload.single('imagen'), addUsuario)
 api.get('/usuarios', getUsuarios)
 api.get('/usuarios/:id', findUsuarios);
-api.put('/usuarios/:id', updateUsuarios);
+api.put('/usuarios/:id', upload.single('imagen'), updateUsuarios);
 api.delete ('/usuarios/:id', deleteUsuario)
 
 module.exports = api

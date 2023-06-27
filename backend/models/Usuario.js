@@ -19,9 +19,9 @@ const usuarioSchema = new mongoose.Schema(
   }
 );
 
-usuarioSchema.methods.setImagen = function setImagen() {
+usuarioSchema.methods.setImagen = function setImagen(filename) {
   const { host, port } = appConfig;
-  this.imagen = `${host}:${port}/public/storage/imgs/${filename}`;
+  this.imagen = `${host}:${port}/public/${filename}`;
 };
 
 const Usuario = mongoose.model("usuario", usuarioSchema);

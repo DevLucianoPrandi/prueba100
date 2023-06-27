@@ -43,7 +43,7 @@ async function addUsuario(req, res) {
 
 async function getUsuarios(req, res) {
    try {
-    const usuarios = await Usuario.find();
+    const usuarios = await Usuario.find().lean().exec();
     res.status(200).send ({usuarios})
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -60,7 +60,14 @@ async function findUsuarios(req, res) {
 }
 
 async function updateUsuarios(req, res) {
+
   try {
+
+    if (req.file) {
+      const { filename } = req.file;
+      usuario.setImagen(filename);
+    }
+
     const usuarios = await Usuario.findByIdAndUpdate(req.params.id, req.body, {new: true});
     res.status(201).send({ usuarios });
   } catch (e) {

@@ -1,7 +1,8 @@
 const config ={
     appConfig: {
         port:process.env.APP_PORT,
-        host: process.env.APP_HOST
+        host: process.env.APP_HOST,
+        secret: process.env.SESSION_SECRET
     },
     dbConfig:{
         port:process.env.DB_PORT,

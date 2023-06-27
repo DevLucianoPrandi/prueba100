@@ -20,7 +20,13 @@ function CrearIdiomas() {
     const inputFileRef = useRef()
 
     const handleSubmit = (idiomaData) => {
-        saveIdioma(idiomaData = { nombre: nombre, descripcion: descripcion, paises: paises, boton: boton, imagen: `storage/imgs/` + inputFileRef.current.files[0] })
+        saveIdioma(idiomaData = {
+            nombre: nombre,
+            descripcion: descripcion,
+            paises: paises,
+            boton: boton,
+            imagen: inputFileRef.current.files[0],
+        })
             .then((response) => {
                 handleClose()
                 window.location.reload()

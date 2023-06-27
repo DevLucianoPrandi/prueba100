@@ -59,7 +59,7 @@ export const AdmUsuarios = () => {
                         >
                             <div className="ms-2 me-auto">
                                 <div className="fw-bold">Imágen de perfíl</div>
-                                <Image style={{ border: '3px solid grey', height: '3rem', width: 'auto' }} className='shadow mb-4' src={process.env.PUBLIC_URL + imagen} rounded />
+                                <Image style={{ border: '3px solid grey', height: '3rem', width: 'auto' }} className='shadow mb-4' src={process.env.PUBLIC_URL + imagen} roundedCircle />
                             </div>
                         </ListGroup.Item>
                         <ListGroup.Item

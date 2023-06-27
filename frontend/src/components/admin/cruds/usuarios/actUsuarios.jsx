@@ -36,6 +36,7 @@ function ActUsuarios() {
     const inputFileRef = useRef()
 
     const handleSubmit = () => {
+
         const newUser = datosUsuario.user;
         const newNombre = datosUsuario.nombre;
         const newApellido = datosUsuario.apellido;
@@ -45,6 +46,7 @@ function ActUsuarios() {
         const newEmail = datosUsuario.email;
         const newPassword = datosUsuario.password;
         const newCategoria = datosUsuario.categoria;
+        const newImagen = datosUsuario.imagen;
 
         const datosNuevos = {
             user: newUser,
@@ -56,7 +58,7 @@ function ActUsuarios() {
             email: newEmail,
             password: newPassword,
             categoria: newCategoria,
-            imagen: `./storage/imgs/` + inputFileRef.current.files[0],
+            imagen: newImagen,
         }
 
         const confirmActualizar = window.confirm(`¿Estás seguro de que deseas actualizar este/a usuario/a?`);
@@ -65,22 +67,13 @@ function ActUsuarios() {
             updateUsuarios(usuarioSel, datosNuevos)
                 .then((response) => {
                     handleClose()
-                    window.location.reload()
+                    //window.location.reload()
                 })
                 .catch((error) => {
                     console.log(error);
                 });
         }
 
-    }
-    
-    function mostrarContrasena() {
-        const passwordInput = document.getElementById("password");
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-        } else {
-            passwordInput.type = "password";
-        }
     }
 
     return (
@@ -101,82 +94,81 @@ function ActUsuarios() {
                                 <Form.Select className='mb-3' value={usuarioSel} onChange={handleSelUsuario}>
                                     {usuarios.map((usuarios) => (
                                         <option key={usuarios._id} value={usuarios._id}>
-                                            {usuarios.nombre}
+                                            {usuarios.nombre} {usuarios.apellido}
                                         </option>
                                     ))
                                     }
                                     console.log(usuarios);
                                 </Form.Select>
                             </Form.Group>
-                            <Row className="mb-3">
-                                <Form.Group as={Col} controlId="usuario">
-                                    <Form.Label>Nombre de usuario/a</Form.Label>
-                                    <Form.Control placeholder={usuarios.user || ''} name='user' onChange={(event) => { setDatosUsuario({ ...datosUsuario, user: event.target.value, }); }} />
-                                </Form.Group>
-                            </Row>
-
-                            <Row className="mb-3">
-                                <Form.Group as={Col} controlId="nombre">
-                                    <Form.Label>Nombre</Form.Label>
-                                    <Form.Control placeholder={usuarios.nombre || ''} name='nombre' onChange={(event) => { setDatosUsuario({ ...datosUsuario, nombre: event.target.value, }); }} />
-                                </Form.Group>
-                            </Row>
-                            <Row className="mb-3">
-                                <Form.Group as={Col} controlId="apellido">
-                                    <Form.Label>Apellido</Form.Label>
-                                    <Form.Control placeholder={usuarios.apellido || ''} name='apellido' onChange={(event) => { setDatosUsuario({ ...datosUsuario, apellido: event.target.value, }); }} />
-                                </Form.Group>
-                            </Row>
-
-                            <Form.Group className="mb-3" controlId="fechadenac">
-                                <Form.Label>Fecha de nacimiento</Form.Label>
-                                <Form.Control placeholder={usuarios.fechadenac || ''} name='fechadenac' onChange={(event) => { setDatosUsuario({ ...datosUsuario, fechadenac: event.target.value, }); }} />
+                        <Row className="mb-3">
+                            <Form.Group as={Col} controlId="usuario">
+                                <Form.Label>Nombre de usuario/a</Form.Label>
+                                <Form.Control placeholder={usuarios.user || ''} name='user' onChange={(event) => { setDatosUsuario({ ...datosUsuario, user: event.target.value, }); }} />
                             </Form.Group>
+                        </Row>
 
-                            <Row className="mb-3">
-                                <Form.Group as={Col} controlId="dni">
-                                    <Form.Label>Número de DNI</Form.Label>
-                                    <Form.Control placeholder={usuarios.dni || ''} name='dni' onChange={(event) => { setDatosUsuario({ ...datosUsuario, dni: event.target.value, }); }} />
-                                </Form.Group>
-                            </Row>
-
-                            <Row className="mb-3">
-                                <Form.Group as={Col} controlId="telefono">
-                                    <Form.Label>Número de teléfono</Form.Label>
-                                    <Form.Control placeholder={usuarios.telefono || ''} name='telefono' onChange={(event) => { setDatosUsuario({ ...datosUsuario, telefono: event.target.value, }); }} />
-                                </Form.Group>
-                            </Row>
-
-                            <Row className="mb-3">
-                                <Form.Group as={Col} controlId="email">
-                                    <Form.Label>Correo electrónico</Form.Label>
-                                    <Form.Control type='email' placeholder={usuarios.email || ''} name='email' onChange={(event) => { setDatosUsuario({ ...datosUsuario, email: event.target.value, }); }} />
-                                </Form.Group>
-                            </Row>
-                            <Row className="mb-3">
-                                <Form.Group as={Col} controlId="password">
-                                    <Form.Label>Password</Form.Label>
-                                    <Form.Control type='password' placeholder={usuarios.password || ''} name='password' onChange={(event) => { setDatosUsuario({ ...datosUsuario, password: event.target.value, }); }} />
-                                    <Form.Check className='m-2 content-justify-center' type="switch" id="custom-switch" label="Mostrar contraseña" onClick={mostrarContrasena} />
-                                </Form.Group>
-                            </Row>
-
-                            <Form.Group controlId="imagen" className="mb-3">
-                                <Form.Label>Seleccioná imagen de perfíl</Form.Label>
-                                <Form.Control type="file" ref={inputFileRef} />
+                        <Row className="mb-3">
+                            <Form.Group as={Col} controlId="nombre">
+                                <Form.Label>Nombre</Form.Label>
+                                <Form.Control placeholder={usuarios.nombre || ''} name='nombre' onChange={(event) => { setDatosUsuario({ ...datosUsuario, nombre: event.target.value, }); }} />
                             </Form.Group>
+                        </Row>
+                        <Row className="mb-3">
+                            <Form.Group as={Col} controlId="apellido">
+                                <Form.Label>Apellido</Form.Label>
+                                <Form.Control placeholder={usuarios.apellido || ''} name='apellido' onChange={(event) => { setDatosUsuario({ ...datosUsuario, apellido: event.target.value, }); }} />
+                            </Form.Group>
+                        </Row>
 
-                            <Row className="mb-3">
-                                <Form.Group as={Col} controlId="categoria">
-                                    <Form.Select className='mb-3' name='categoria' onChange={(event) => { setDatosUsuario({ ...datosUsuario, categoria: event.target.value, }); }}>
-                                        <option>Seleccioná una categoría</option>
-                                        <option value="alumno">Alumno</option>
-                                        <option value="administrador">Administrador</option>
-                                    </Form.Select>
-                                </Form.Group>
-                            </Row>
+                        <Form.Group className="mb-3" controlId="fechadenac">
+                            <Form.Label>Fecha de nacimiento</Form.Label>
+                            <Form.Control placeholder={usuarios.fechadenac || ''} name='fechadenac' onChange={(event) => { setDatosUsuario({ ...datosUsuario, fechadenac: event.target.value, }); }} />
+                        </Form.Group>
 
-                        </Form>
+                        <Row className="mb-3">
+                            <Form.Group as={Col} controlId="dni">
+                                <Form.Label>Número de DNI</Form.Label>
+                                <Form.Control placeholder={usuarios.dni || ''} name='dni' onChange={(event) => { setDatosUsuario({ ...datosUsuario, dni: event.target.value, }); }} />
+                            </Form.Group>
+                        </Row>
+
+                        <Row className="mb-3">
+                            <Form.Group as={Col} controlId="telefono">
+                                <Form.Label>Número de teléfono</Form.Label>
+                                <Form.Control placeholder={usuarios.telefono || ''} name='telefono' onChange={(event) => { setDatosUsuario({ ...datosUsuario, telefono: event.target.value, }); }} />
+                            </Form.Group>
+                        </Row>
+
+                        <Row className="mb-3">
+                            <Form.Group as={Col} controlId="email">
+                                <Form.Label>Correo electrónico</Form.Label>
+                                <Form.Control type='email' placeholder={usuarios.email || ''} name='email' onChange={(event) => { setDatosUsuario({ ...datosUsuario, email: event.target.value, }); }} />
+                            </Form.Group>
+                        </Row>
+                        <Row className="mb-3">
+                            <Form.Group as={Col} controlId="password">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control type='password' placeholder={usuarios.password || ''} name='password' onChange={(event) => { setDatosUsuario({ ...datosUsuario, password: event.target.value, }); }} />
+                            </Form.Group>
+                        </Row>
+
+                        <Form.Group controlId="imagen" className="mb-3">
+                            <Form.Label>Seleccioná imagen de perfíl</Form.Label>
+                            <Form.Control type="file" ref={inputFileRef} />
+                        </Form.Group>
+
+                        <Row className="mb-3">
+                        <Form.Group as={Col} controlId="categoria">
+                                <Form.Select className='mb-3' name='categoria' onChange={(event) => { setDatosUsuario({ ...datosUsuario, categoria: event.target.value, }); }}>
+                                    <option>Seleccioná una categoría</option>
+                                    <option  value="alumno">Alumno</option>
+                                    <option  value="administrador">Administrador</option>
+                                </Form.Select>
+                            </Form.Group>
+                        </Row>
+
+                    </Form>
                     </Container>
                 </Modal.Body>
                 <Modal.Footer>

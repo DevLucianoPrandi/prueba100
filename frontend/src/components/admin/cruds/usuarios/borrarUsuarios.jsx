@@ -64,7 +64,7 @@ function BorrarUsuarios() {
                                 <Form.Select className='mb-3' value={usuarioSel} onChange={handleSelUsuario}>
                                     {usuarios.map((usuarios) => (
                                         <option key={usuarios._id} value={usuarios._id}>
-                                            {usuarios.nombre}
+                                            {usuarios.nombre} {usuarios.apellido}
                                         </option>
                                     ))
                                     }

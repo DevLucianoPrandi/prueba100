@@ -64,11 +64,17 @@ export async function saveUsuario(usuarioData) {
 }
 
 export async function saveCursos(cursosData) {
+  const formData = new FormData();
+  formData.append("idioma", cursosData.idioma);
+  formData.append("imagen", cursosData.imagen);
+  formData.append("dia", cursosData.dia);
+  formData.append("horario", cursosData.horario);
+  formData.append("modalidad", cursosData.modalidad);
   try {
     const response = await axios({
       url: `${baseUrl}/cursos`,
       method: "POST",
-      data: cursosData,
+      data: formData,
     });
     return response;
   } catch (e) {
@@ -96,6 +102,7 @@ export async function saveIdioma(idiomaData) {
 }
 
 export async function updateUsuarios(_id, datosNuevos) {
+
   try {
     const response = await axios({
       url: `${baseUrl}/usuarios/${_id}`,

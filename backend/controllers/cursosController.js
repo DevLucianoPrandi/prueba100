@@ -2,17 +2,22 @@ const Curso = require("../models/Cursos");
 
 async function addCurso(req, res) {
   try {
-    const { idioma, dia, horario, modalidad } = req.body;
+    const { idioma, dia, horario, imagen, modalidad } = req.body;
 
     const curso = Curso({
       idioma,
       dia,
       horario,
+      imagen,
       modalidad,
     });
 
-    const cursos = await curso.save();
+    if (req.file) {
+      const { filename } = req.file;
+      curso.setImagen(filename);
+    }
 
+    const cursos = await curso.save();
     res.status(201).send({ cursos });
   } catch (e) {
     res.status(500).send({ message: e.message });
@@ -20,9 +25,9 @@ async function addCurso(req, res) {
 }
 
 async function getCursos(req, res) {
-   try {
+  try {
     const cursos = await Curso.find();
-    res.status(200).send ({cursos})
+    res.status(200).send({ cursos });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -39,7 +44,9 @@ async function findCursos(req, res) {
 
 async function updateCursos(req, res) {
   try {
-    const cursos = await Curso.findByIdAndUpdate(req.params.id, req.body, {new: true});
+    const cursos = await Curso.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
     res.status(201).send({ cursos });
   } catch (e) {
     res.status(400).send({ message: e.message });
@@ -55,11 +62,10 @@ async function deleteCursos(req, res) {
   }
 }
 
-
 module.exports = {
   addCurso,
   getCursos,
   findCursos,
   updateCursos,
-  deleteCursos
+  deleteCursos,
 };

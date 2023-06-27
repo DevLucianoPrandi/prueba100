@@ -18,7 +18,7 @@ function Navbar() {
           <Link className='links' as={Link} to="./servicios">Servicios</Link>
           <NavDropdown className='linksdrop' bg="#0066cc" title="Cursos" id="nav-dropdown">
             <NavDropdown.Item className='linksdrop2' as={Link} to="./idiomas">Idiomas</NavDropdown.Item>
-            <NavDropdown.Item className='linksdrop2' as={Link} to="./niveles">Niveles</NavDropdown.Item>
+            <NavDropdown.Item className='linksdrop2' as={Link} to="./cursos">Cursos</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item className='linksdrop2' as={Link} to="./calendario">Calendario académico</NavDropdown.Item>
           </NavDropdown>

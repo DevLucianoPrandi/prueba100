@@ -40,13 +40,14 @@ function ActIdiomas() {
         const newDescripcion = datosIdioma.descripcion;
         const newPaises = datosIdioma.paises;
         const newBoton = datosIdioma.boton;
+        const newImagen= inputFileRef.current.files[0];
 
         const datosNuevos = {
             nombre: newNombre,
             descripcion: newDescripcion,
             paises: newPaises,
             boton: newBoton,
-            imagen: `storage/imgs/` + inputFileRef.current.files[0],
+            imagen: newImagen,
         }
 
         const confirmActualizar = window.confirm(`¿Estás seguro de que deseas actualizar este idioma?`);

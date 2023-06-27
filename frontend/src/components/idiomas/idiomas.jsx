@@ -29,9 +29,9 @@ export const Idiomas = () => {
     return (
         <Container className='backGround d-flex'>
             <Row className='tarjetas pb-3' >
-            <h2 className='titulo'>Eligí el idioma que quieras aprender!</h2>
+            <h2 className='titulo'>Eligí tu curso ideal!</h2>
                 {
-                    idiomas.map(({ nombre, descripcion, boton, paises, imagen }) => (
+                    idiomas.map(({ nombre, imagen, descripcion, paises, boton }) => (
 
                         <Col xs={12} md={8} lg={4} >
                             <Card className='shadow text-center m-2 justify' style={{height:'30rem'}} >
